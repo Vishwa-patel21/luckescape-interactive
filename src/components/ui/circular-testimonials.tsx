@@ -60,7 +60,7 @@ export function CircularTestimonials({ testimonials, autoplay = true }: { testim
             key={item.src}
             src={item.src}
             alt={item.name}
-            className="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-card transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
+            className="absolute inset-0 h-full w-full object-cover shadow-card transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
             style={getStyle(index)}
           />
         ))}

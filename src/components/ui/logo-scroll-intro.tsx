@@ -151,7 +151,7 @@ export function LogoScrollIntro() {
             }}
             className="mt-9 text-[10px] uppercase tracking-[0.42em] text-[#2c6a91]/70"
           >
-            Private luxury travel. Quiet access. Launching soon.
+            Private luxury travel. Quiet access. Guest list now open.
           </motion.p>
 
           <motion.div

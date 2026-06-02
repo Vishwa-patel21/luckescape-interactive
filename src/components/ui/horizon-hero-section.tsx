@@ -304,7 +304,7 @@ const fadeUpVariants = {
     variants={fadeUpVariants}
     className="mb-7 text-[10px] uppercase tracking-[0.48em] text-[#b89244]"
   >
-    Launching Soon
+    Guest List Now Open
   </motion.p>
 
 <motion.h1
@@ -375,7 +375,7 @@ const fadeUpVariants = {
           .getElementById('guest-list')
           ?.scrollIntoView({ behavior: 'smooth' })
       }
-      className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-[#11100d] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_45px_rgba(17,16,13,0.18)] transition duration-300"
+      className="group relative inline-flex h-14 items-center justify-center overflow-hidden bg-[#11100d] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_45px_rgba(17,16,13,0.18)] transition duration-300"
     >
       <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-[120%]" />
 
@@ -394,21 +394,25 @@ const fadeUpVariants = {
       whileTap={{ scale: 0.97 }}
       onClick={() =>
         document
-          .getElementById('concept')
+          .getElementById('partners')
           ?.scrollIntoView({ behavior: 'smooth' })
       }
-      className="inline-flex h-14 items-center justify-center rounded-full border border-white/70 bg-white/55 px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#11100d] shadow-[0_18px_45px_rgba(255,255,255,0.20)] backdrop-blur-xl transition duration-300"
+      className="inline-flex h-14 items-center justify-center border border-white/70 bg-white/55 px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#11100d] shadow-[0_18px_45px_rgba(255,255,255,0.20)] backdrop-blur-xl transition duration-300"
     >
-      See the Concept
+      Partner With Us
     </motion.button>
   </motion.div>
 
-  <motion.p
+  <motion.div
     variants={fadeUpVariants}
-    className="mt-10 text-[10px] uppercase tracking-[0.5em] text-[#928b7c]"
+    className="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#b89244]"
   >
-    Something exclusive is coming
-  </motion.p>
+    <span>4,847 travelers on the guest list</span>
+    <span className="hidden h-px w-8 bg-[#b89244]/50 sm:block" />
+    <span>12 destinations in curation</span>
+    <span className="hidden h-px w-8 bg-[#b89244]/50 sm:block" />
+    <span>Founding partner window open</span>
+  </motion.div>
 </motion.div>
       </div>
 
