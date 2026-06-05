@@ -47,7 +47,7 @@ export function LogoScrollIntro() {
   return (
     <section
       ref={introRef}
-      className="relative z-[80] h-screen overflow-hidden bg-[#edf4f6]"
+      className="relative z-[80] h-screen overflow-hidden bg-[#030302]"
     >
       <motion.div
         style={{ opacity: bgOpacity }}
@@ -58,11 +58,11 @@ export function LogoScrollIntro() {
             backgroundImage: `url(${LUXURY_HERO_IMAGE})`,
             scale: bgScale,
           }}
-          className="absolute inset-[-10%] bg-cover bg-center opacity-35 blur-[7px]"
+          className="absolute inset-[-10%] bg-cover bg-center opacity-70 blur-[4px]"
         />
 
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(236,244,246,0.78),rgba(246,242,232,0.92)_62%,rgba(247,242,232,1))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.28),rgba(238,244,245,0.80)_42%,rgba(247,242,232,0.96)_78%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,2,0.70),rgba(3,3,2,0.46)_45%,rgba(3,3,2,0.92))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(200,169,106,0.16),rgba(3,3,2,0.52)_44%,rgba(3,3,2,0.96)_82%)]" />
       </motion.div>
 
       <div className="sticky top-0 z-10 flex h-screen items-center justify-center overflow-hidden px-6">
@@ -97,7 +97,7 @@ export function LogoScrollIntro() {
                   ease: 'easeInOut',
                 }}
               >
-                <Diamond className="h-16 w-16 stroke-[1.4] text-[#0f668e] md:h-20 md:w-20" />
+                <Diamond className="h-16 w-16 stroke-[1.4] text-[#d9bd79] md:h-20 md:w-20" />
               </motion.div>
             </motion.div>
 
@@ -109,7 +109,7 @@ export function LogoScrollIntro() {
                 duration: 0.9,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="hidden h-20 w-px origin-center bg-[#2c6a91]/40 md:block"
+              className="hidden h-20 w-px origin-center bg-[#d9bd79]/42 md:block"
             />
 
             <div className="flex items-center justify-center">
@@ -133,7 +133,7 @@ export function LogoScrollIntro() {
                     duration: 0.72,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="inline-block text-4xl font-light uppercase tracking-[0.32em] text-[#0f668e] sm:text-6xl md:text-7xl"
+                  className="inline-block text-4xl font-light uppercase tracking-[0.32em] text-[#fffaf0] sm:text-6xl md:text-7xl"
                 >
                   {letter}
                 </motion.span>
@@ -149,7 +149,7 @@ export function LogoScrollIntro() {
               duration: 0.8,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="mt-9 text-[10px] uppercase tracking-[0.42em] text-[#2c6a91]/70"
+            className="mt-9 text-[10px] uppercase tracking-[0.42em] text-[#d9bd79]/78"
           >
             Private luxury travel. Quiet access. Guest list now open.
           </motion.p>
@@ -162,7 +162,7 @@ export function LogoScrollIntro() {
               duration: 1,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="mt-9 h-px w-72 origin-center bg-gradient-to-r from-transparent via-[#2c6a91] to-transparent"
+            className="mt-9 h-px w-72 origin-center bg-gradient-to-r from-transparent via-[#d9bd79] to-transparent"
           />
         </motion.div>
 
@@ -172,7 +172,7 @@ export function LogoScrollIntro() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.55, duration: 0.8 }}
           onClick={scrollToSite}
-          className="absolute bottom-12 left-[14%] inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.18em] text-[#2c6a91]"
+          className="absolute bottom-12 left-[14%] inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.18em] text-[#d9bd79]"
         >
           Scroll Down To Discover
           <ChevronDown className="h-4 w-4 animate-bounce" />
@@ -180,7 +180,7 @@ export function LogoScrollIntro() {
 
         <motion.div
           style={{ opacity: discoverOpacity }}
-          className="absolute bottom-12 right-[14%] h-px w-12 bg-[#2c6a91]"
+          className="absolute bottom-12 right-[14%] h-px w-12 bg-[#d9bd79]"
         />
       </div>
     </section>
