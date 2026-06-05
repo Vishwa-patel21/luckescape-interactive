@@ -1,9 +1,29 @@
+import { useEffect, useMemo, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 export const LUXURY_HERO_IMAGE =
-  'https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=2400&auto=format&fit=crop';
+  'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2400&auto=format&fit=crop';
+
+function usePointerRatio() {
+  const [position, setPosition] = useState({ x: 0.5, y: 0.5 });
+
+  useEffect(() => {
+    const onMove = (event: PointerEvent) => {
+      setPosition({
+        x: event.clientX / window.innerWidth,
+        y: event.clientY / window.innerHeight,
+      });
+    };
+
+    window.addEventListener('pointermove', onMove, { passive: true });
+    return () => window.removeEventListener('pointermove', onMove);
+  }, []);
+
+  return position;
+}
 
 export function GlobalMovingImage() {
+  const pointer = usePointerRatio();
   const { scrollYProgress } = useScroll();
 
   const smooth = useSpring(scrollYProgress, {
@@ -12,14 +32,35 @@ export function GlobalMovingImage() {
     mass: 0.9,
   });
 
-  const opacity = useTransform(smooth, [0, 0.2, 1], [0.68, 0.38, 0.52]);
+  const y = useTransform(smooth, [0, 1], ['-10%', '12%']);
+  const x = useTransform(smooth, [0, 1], ['-3%', '3%']);
+  const scale = useTransform(smooth, [0, 1], [1.1, 1.32]);
+  const rotate = useTransform(smooth, [0, 1], [-1.2, 1.4]);
+  const imageOpacity = useTransform(smooth, [0, 0.25, 0.65, 1], [0.58, 0.42, 0.28, 0.38]);
+
+  const pointerTransform = useMemo(() => {
+    const moveX = (pointer.x - 0.5) * -56;
+    const moveY = (pointer.y - 0.5) * -38;
+    return `translate3d(${moveX}px, ${moveY}px, 0)`;
+  }, [pointer.x, pointer.y]);
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#faf8f5]">
       <motion.div
-        style={{ opacity }}
-        className="absolute inset-0 bg-[linear-gradient(180deg,#faf8f5_0%,#f7f2e8_52%,#fbfaf7_100%)]"
-      />
+        style={{ x, y, scale, rotate, opacity: imageOpacity }}
+        className="absolute inset-[-18%]"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+          style={{
+            backgroundImage: `url(${LUXURY_HERO_IMAGE})`,
+            transform: pointerTransform,
+          }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,248,245,0.90),rgba(250,248,245,0.58)_48%,rgba(250,248,245,0.94)),linear-gradient(180deg,rgba(250,248,245,0.36),rgba(250,248,245,0.88)_58%,rgba(250,248,245,1))]" />
+      </motion.div>
+
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,248,245,0.48),rgba(247,242,232,0.76)_52%,rgba(251,250,247,0.92))]" />
       <div className="absolute inset-0 noise" />
     </div>
   );
