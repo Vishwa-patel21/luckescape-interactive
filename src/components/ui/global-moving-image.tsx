@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 export const LUXURY_HERO_IMAGE =
-  'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2400&auto=format&fit=crop';
+  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop';
 
 function usePointerRatio() {
   const [position, setPosition] = useState({ x: 0.5, y: 0.5 });
@@ -36,7 +36,7 @@ export function GlobalMovingImage() {
   const x = useTransform(smooth, [0, 1], ['-3%', '3%']);
   const scale = useTransform(smooth, [0, 1], [1.1, 1.32]);
   const rotate = useTransform(smooth, [0, 1], [-1.2, 1.4]);
-  const imageOpacity = useTransform(smooth, [0, 0.25, 0.65, 1], [0.58, 0.42, 0.28, 0.38]);
+  const imageOpacity = useTransform(smooth, [0, 0.25, 0.65, 1], [0.95, 0.88, 0.72, 0.82]);
 
   const pointerTransform = useMemo(() => {
     const moveX = (pointer.x - 0.5) * -56;
@@ -45,7 +45,7 @@ export function GlobalMovingImage() {
   }, [pointer.x, pointer.y]);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#faf8f5]">
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#030302]">
       <motion.div
         style={{ x, y, scale, rotate, opacity: imageOpacity }}
         className="absolute inset-[-18%]"
@@ -57,10 +57,10 @@ export function GlobalMovingImage() {
             transform: pointerTransform,
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,248,245,0.90),rgba(250,248,245,0.58)_48%,rgba(250,248,245,0.94)),linear-gradient(180deg,rgba(250,248,245,0.36),rgba(250,248,245,0.88)_58%,rgba(250,248,245,1))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,3,2,0.82),rgba(3,3,2,0.38)_48%,rgba(3,3,2,0.86)),linear-gradient(180deg,rgba(3,3,2,0.54),rgba(3,3,2,0.18)_42%,rgba(3,3,2,0.92))]" />
       </motion.div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,248,245,0.48),rgba(247,242,232,0.76)_52%,rgba(251,250,247,0.92))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_18%,rgba(200,169,106,0.18),transparent_34%),linear-gradient(180deg,rgba(0,0,0,0.32),rgba(0,0,0,0.58)_48%,rgba(0,0,0,0.88))]" />
       <div className="absolute inset-0 noise" />
     </div>
   );

@@ -291,7 +291,7 @@ const fadeUpVariants = {
         className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-80"
       />
 
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_70%_26%,rgba(235,205,145,0.24),transparent_34%),linear-gradient(90deg,rgba(247,242,232,0.94),rgba(247,242,232,0.62)_52%,rgba(247,242,232,0.82))]" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_70%_26%,rgba(235,205,145,0.20),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.54),rgba(0,0,0,0.16)_52%,rgba(0,0,0,0.62))]" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] max-w-[1500px] flex-col items-center justify-center text-center">
 <motion.div
@@ -315,7 +315,7 @@ const fadeUpVariants = {
     <RevealText
       text="Luxury Casino Travel"
       fontSize="text-[clamp(2.9rem,6.2vw,7rem)]"
-      textColor="text-[#11100d]"
+      textColor="text-[#fffaf0]"
       overlayColor="text-[#b89244]"
       letterDelay={0.035}
     />
@@ -323,7 +323,7 @@ const fadeUpVariants = {
 
   <motion.div
     variants={lineVariants}
-    className="mt-3 overflow-hidden font-serif text-[clamp(3rem,6.4vw,7.1rem)] italic leading-[0.92] tracking-[-0.045em] text-[#8f7031]"
+    className="mt-3 overflow-hidden font-serif text-[clamp(3rem,6.4vw,7.1rem)] italic leading-[0.92] tracking-[-0.045em] text-[#d9bd79]"
   >
     <motion.span
       className="inline-block"
@@ -352,7 +352,7 @@ const fadeUpVariants = {
 
   <motion.p
     variants={fadeUpVariants}
-    className="mx-auto mt-7 max-w-2xl text-base leading-7 text-[#6e695d] md:text-lg md:leading-8"
+    className="mx-auto mt-7 max-w-2xl text-base leading-7 text-white/74 md:text-lg md:leading-8"
   >
     Private access to curated casino cruises, luxury resorts, and
     invitation-only destination experiences for travelers who prefer quiet
@@ -397,7 +397,7 @@ const fadeUpVariants = {
           .getElementById('partners')
           ?.scrollIntoView({ behavior: 'smooth' })
       }
-      className="inline-flex h-14 items-center justify-center border border-white/70 bg-white/55 px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#11100d] shadow-[0_18px_45px_rgba(255,255,255,0.20)] backdrop-blur-xl transition duration-300"
+      className="inline-flex h-14 items-center justify-center border border-white/30 bg-white/10 px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl transition duration-300"
     >
       Partner With Us
     </motion.button>
@@ -417,10 +417,10 @@ const fadeUpVariants = {
       </div>
 
       <div className="absolute bottom-8 left-1/2 z-10 hidden w-[240px] -translate-x-1/2 items-center gap-4 md:flex">
-        <span className="text-[10px] uppercase tracking-[0.28em] text-[#81796c]">
+        <span className="text-[10px] uppercase tracking-[0.28em] text-white/62">
           Scroll
         </span>
-        <div className="h-px flex-1 overflow-hidden bg-black/15">
+        <div className="h-px flex-1 overflow-hidden bg-white/20">
           <div
             className="h-full bg-[#b89244] transition-all duration-300"
             style={{ width: `${scrollProgress * 100}%` }}

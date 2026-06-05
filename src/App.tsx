@@ -132,13 +132,13 @@ function HeaderBrand() {
     <header className="fixed left-4 top-4 z-50 md:left-8 md:top-6">
       <button
         onClick={() => scrollToSection('#home')}
-        className="group flex items-center gap-3 border border-ink/10 bg-white/70 px-3 py-2 shadow-sm backdrop-blur-xl transition hover:bg-white/90"
+        className="group flex items-center gap-3 border border-white/15 bg-black/35 px-3 py-2 shadow-sm backdrop-blur-xl transition hover:bg-black/50"
         aria-label="Go to LuckEscape home"
       >
-        <span className="grid h-10 w-10 place-items-center border border-champagne/45 bg-pearl/80 transition-transform group-hover:rotate-12">
+        <span className="grid h-10 w-10 place-items-center border border-champagne/45 bg-black/35 transition-transform group-hover:rotate-12">
           <Diamond className="h-4 w-4 text-champagne" />
         </span>
-        <span className="hidden text-sm font-semibold uppercase tracking-[0.32em] text-ink sm:block">LuckEscape</span>
+        <span className="hidden text-sm font-semibold uppercase tracking-[0.32em] text-pearl sm:block">LuckEscape</span>
       </button>
     </header>
   );
@@ -413,12 +413,12 @@ export default function App() {
   }, []);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-pearl text-ink">
+    <main className="min-h-screen overflow-x-hidden bg-[#030302] text-pearl">
       <LuckEscapeLoader show={showLoader} />
 
       {showIntro && <LogoScrollIntro key={introKey} />}
 
-      <div id="site-start" className="relative">
+      <div id="site-start" className="dark-theme relative">
         <GlobalMovingImage />
         <HeaderBrand />
         <GradientMenu />

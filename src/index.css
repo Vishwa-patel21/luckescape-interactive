@@ -68,6 +68,48 @@ button {
   box-shadow: 0 0 0px 1000px rgba(255,250,240,0.92) inset;
 }
 
+.dark-theme .text-ink {
+  color: #fffaf0;
+}
+
+.dark-theme .text-smoke {
+  color: rgba(255, 250, 240, 0.68);
+}
+
+.dark-theme .bg-pearl,
+.dark-theme .bg-porcelain {
+  background-color: rgba(18, 16, 13, 0.76);
+}
+
+.dark-theme .bg-white\/34,
+.dark-theme .bg-white\/40,
+.dark-theme .bg-white\/44,
+.dark-theme .bg-white\/48,
+.dark-theme .bg-white\/52,
+.dark-theme .bg-white\/55,
+.dark-theme .bg-white\/58,
+.dark-theme .bg-white\/60,
+.dark-theme .bg-white\/64,
+.dark-theme .bg-white\/70,
+.dark-theme .bg-pearl\/70,
+.dark-theme .bg-pearl\/80,
+.dark-theme .bg-porcelain\/90 {
+  background-color: rgba(10, 9, 7, 0.62);
+}
+
+.dark-theme .border-ink\/10,
+.dark-theme .border-ink\/15 {
+  border-color: rgba(255, 250, 240, 0.16);
+}
+
+.dark-theme .luxury-input {
+  color: #fffaf0;
+}
+
+.dark-theme .luxury-input::placeholder {
+  color: rgba(255, 250, 240, 0.56);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
