@@ -113,6 +113,29 @@ const destinationCards = [
   },
 ];
 
+const dossierItems = [
+  {
+    label: 'Guest list',
+    value: '4,847+',
+    copy: 'Travelers already waiting for first access.',
+  },
+  {
+    label: 'Member status',
+    value: 'Founding',
+    copy: 'Early members keep permanent founding recognition.',
+  },
+  {
+    label: 'Destinations',
+    value: '12',
+    copy: 'Casino resorts, cruises, and private arrivals in curation.',
+  },
+  {
+    label: 'Partner window',
+    value: 'Open',
+    copy: 'Casino and resort launch partners are being reviewed now.',
+  },
+];
+
 function Reveal({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
     <motion.div
@@ -153,12 +176,12 @@ function ConceptSection() {
 >
       <div id="concept" className="grid gap-10 border border-ink/10 bg-white/64 p-8 shadow-editorial backdrop-blur-xl md:grid-cols-[0.85fr_1.15fr] md:p-12">
         <div>
-          <Badge>Platform in development</Badge>
+          <Badge>Invitation platform</Badge>
           <h3 className="mt-6 font-serif text-4xl leading-none tracking-[-0.04em] text-ink md:text-6xl">Casino travel without the casino noise.</h3>
         </div>
         <div className="space-y-5 text-lg leading-8 text-smoke">
           <p>
-            LuckEscape is the first private membership platform built exclusively for casino travelers. We curate luxury gaming experiences - casino resorts, ocean cruises, and iconic destinations - and deliver them to a growing community of high-intent players who are ready to book.
+            LuckEscape is a private membership platform built exclusively for casino travelers. We curate luxury gaming experiences - casino resorts, ocean cruises, and iconic destinations - and deliver them to a growing community of high-intent players who are ready to book.
           </p>
           <p>
             We don't sell noise. We sell access.
@@ -172,12 +195,47 @@ function ConceptSection() {
   );
 }
 
+function InvitationDossier() {
+  return (
+    <section className="relative z-10 px-4 py-20 md:px-8 md:py-28">
+      <div className="mx-auto grid max-w-7xl gap-10 border border-white/14 bg-black/46 p-5 shadow-card backdrop-blur-xl md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+        <Reveal className="relative min-h-[420px] overflow-hidden">
+          <img src={img.lounge} alt="Private casino lounge" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.84)),linear-gradient(90deg,rgba(0,0,0,0.62),transparent)]" />
+          <div className="relative z-10 flex h-full min-h-[420px] flex-col justify-between p-7">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Private club signal</p>
+              <h2 className="mt-5 max-w-2xl font-serif text-5xl leading-none tracking-[-0.05em] text-pearl md:text-7xl">
+                An invitation list with momentum.
+              </h2>
+            </div>
+            <p className="max-w-xl text-base leading-8 text-white/72">
+              LuckEscape is being shaped for two audiences at once: travelers who want discreet access, and casino operators who want to meet demand before public bookings open.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal className="grid gap-3 sm:grid-cols-2">
+          {dossierItems.map((item) => (
+            <div key={item.label} className="border border-white/12 bg-white/8 p-6 backdrop-blur-md">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-white/48">{item.label}</p>
+              <p className="mt-5 font-serif text-5xl leading-none text-champagne">{item.value}</p>
+              <p className="mt-5 text-sm leading-7 text-white/68">{item.copy}</p>
+            </div>
+          ))}
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function ExperienceSection() {
   return (
     <section id="experiences" className="relative z-10 px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-7xl">
         <Reveal className="max-w-3xl">
-          <h2 className="font-serif text-5xl leading-none tracking-[-0.05em] text-ink md:text-8xl">Every trip. Curated for players who know the difference.</h2>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Member experience</p>
+          <h2 className="mt-5 font-serif text-5xl leading-none tracking-[-0.05em] text-ink md:text-8xl">Every trip. Curated for players who know the difference.</h2>
         </Reveal>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -219,7 +277,8 @@ function DestinationPreview() {
       <div className="mx-auto max-w-7xl">
         <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <h2 className="max-w-3xl font-serif text-5xl leading-none tracking-[-0.05em] text-ink md:text-7xl">Where founding members want to go first.</h2>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Launch map</p>
+            <h2 className="mt-5 max-w-3xl font-serif text-5xl leading-none tracking-[-0.05em] text-ink md:text-7xl">Where founding members want to go first.</h2>
           </div>
           <p className="max-w-sm text-sm leading-7 text-smoke">A curated first wave across casino cruises, resort retreats, and discreet arrival experiences.</p>
         </Reveal>
@@ -237,7 +296,8 @@ function FoundingMembersSection() {
     <section id="access" className="relative z-10 px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
         <Reveal>
-          <h2 className="mt-6 font-serif text-5xl leading-none tracking-[-0.055em] text-ink md:text-8xl">Become a Founding Member.</h2>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Permanent founding status</p>
+          <h2 className="mt-5 font-serif text-5xl leading-none tracking-[-0.055em] text-ink md:text-8xl">Become a Founding Member.</h2>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-smoke">
             We are opening a limited number of early invitations ahead of our first booking window. Over 4,800 travelers have already joined. Founding members receive access before the public.
           </p>
@@ -267,7 +327,8 @@ function PaymentCardPageSection() {
       <div className="mx-auto max-w-7xl overflow-hidden border border-ink/10 bg-white/58 p-5 shadow-editorial backdrop-blur-xl md:p-10">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <Reveal>
-            <h2 className="mt-6 font-serif text-5xl leading-none tracking-[-0.05em] text-ink md:text-7xl">Your access. On a card.</h2>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Access flow</p>
+            <h2 className="mt-5 font-serif text-5xl leading-none tracking-[-0.05em] text-ink md:text-7xl">Your access. On a card.</h2>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-smoke">
               Members request access, receive review, and enter the launch window by invitation.
             </p>
@@ -424,6 +485,7 @@ export default function App() {
         <GradientMenu />
         <HorizonHeroSection />
         <Marquee />
+        <InvitationDossier />
         <ConceptSection />
         <ExperienceSection />
         <DestinationPreview />

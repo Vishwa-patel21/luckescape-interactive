@@ -313,8 +313,8 @@ const fadeUpVariants = {
 >
   <div className="leading-[0.92]">
     <RevealText
-      text="Luxury Casino Travel"
-      fontSize="text-[clamp(2.9rem,6.2vw,7rem)]"
+      text="LuckEscape"
+      fontSize="text-[clamp(3.6rem,9vw,9.5rem)]"
       textColor="text-[#fffaf0]"
       overlayColor="text-[#b89244]"
       letterDelay={0.035}
@@ -334,7 +334,7 @@ const fadeUpVariants = {
         ease: 'easeInOut',
       }}
     >
-      Reimagined.
+    Private Access.
     </motion.span>
   </motion.div>
 
@@ -354,9 +354,9 @@ const fadeUpVariants = {
     variants={fadeUpVariants}
     className="mx-auto mt-7 max-w-2xl text-base leading-7 text-white/74 md:text-lg md:leading-8"
   >
-    Private access to curated casino cruises, luxury resorts, and
-    invitation-only destination experiences for travelers who prefer quiet
-    access over noise.
+    Luxury casino travel for players who prefer quiet privilege over noise.
+    Founding members receive first visibility into curated resorts, cruises,
+    and invitation-only gaming destinations.
   </motion.p>
 
   <motion.div
