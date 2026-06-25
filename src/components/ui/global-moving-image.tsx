@@ -2,7 +2,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 export const LUXURY_HERO_IMAGE =
-  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop';
+  'https://source.unsplash.com/2400x1600/?las-vegas-strip,night,aerial,golden-lights&sig=101';
+
+export const CLOSING_HERO_IMAGE =
+  'https://source.unsplash.com/2400x1600/?las-vegas-strip,night,wide,aerial&sig=114';
 
 function usePointerRatio() {
   const [position, setPosition] = useState({ x: 0.5, y: 0.5 });
@@ -36,7 +39,7 @@ export function GlobalMovingImage() {
   const x = useTransform(smooth, [0, 1], ['-3%', '3%']);
   const scale = useTransform(smooth, [0, 1], [1.1, 1.32]);
   const rotate = useTransform(smooth, [0, 1], [-1.2, 1.4]);
-  const imageOpacity = useTransform(smooth, [0, 0.25, 0.65, 1], [0.95, 0.88, 0.72, 0.82]);
+  const imageOpacity = useTransform(smooth, [0, 0.25, 0.65, 1], [1, 0.96, 0.9, 0.94]);
 
   const pointerTransform = useMemo(() => {
     const moveX = (pointer.x - 0.5) * -56;
@@ -57,10 +60,10 @@ export function GlobalMovingImage() {
             transform: pointerTransform,
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,3,2,0.82),rgba(3,3,2,0.38)_48%,rgba(3,3,2,0.86)),linear-gradient(180deg,rgba(3,3,2,0.54),rgba(3,3,2,0.18)_42%,rgba(3,3,2,0.92))]" />
+        <div className="absolute inset-0 bg-[rgba(3,3,2,0.70)]" />
       </motion.div>
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_18%,rgba(200,169,106,0.18),transparent_34%),linear-gradient(180deg,rgba(0,0,0,0.32),rgba(0,0,0,0.58)_48%,rgba(0,0,0,0.88))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_18%,rgba(200,169,106,0.14),transparent_34%),linear-gradient(180deg,rgba(0,0,0,0.16),rgba(0,0,0,0.34)_48%,rgba(0,0,0,0.64))]" />
       <div className="absolute inset-0 noise" />
     </div>
   );

@@ -5,11 +5,7 @@ import {
   Diamond,
   ExternalLink,
   Mail,
-  Plane,
-  Sailboat,
   ShieldCheck,
-  Star,
-  Ticket,
   Waves,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -17,25 +13,29 @@ import { Button } from '@/components/ui/button';
 import CircularTestimonials from '@/components/ui/circular-testimonials';
 import { CountdownBanner } from '@/components/ui/countdown-banner';
 import GradientMenu, { scrollToSection } from '@/components/ui/gradient-menu';
-import { GlobalMovingImage } from '@/components/ui/global-moving-image';
+import { CLOSING_HERO_IMAGE, GlobalMovingImage } from '@/components/ui/global-moving-image';
 import HorizonHeroSection from '@/components/ui/horizon-hero-section';
 import { GuestListForm } from '@/components/ui/guest-list-form';
 import { MembershipCard } from '@/components/ui/membership-card';
 import PlaceCard from '@/components/ui/card-22';
 import ScrollExpandMedia from '@/components/ui/scroll-expansion-hero';
 import { useEffect, useState } from 'react';
-import { LuckEscapeLoader } from '@/components/ui/luckescape-loader';
 import { LogoScrollIntro } from '@/components/ui/logo-scroll-intro';
 
 const img = {
-  cruise: 'https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=1800&auto=format&fit=crop',
-  resort: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1800&auto=format&fit=crop',
-  lounge: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1800&auto=format&fit=crop',
-  aviation: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1800&auto=format&fit=crop',
-  yacht: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=1800&auto=format&fit=crop',
-  coast: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1800&auto=format&fit=crop',
-  suite: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1800&auto=format&fit=crop',
-  dining: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1800&auto=format&fit=crop',
+  cruise: 'https://source.unsplash.com/1800x1300/?ocean-liner,sea,golden-hour,luxury-cruise&sig=1101',
+  resort: 'https://source.unsplash.com/1800x1300/?casino-resort,pool,night,neon&sig=1102',
+  poolTower: 'https://source.unsplash.com/1800x1300/?casino-resort,pool,tower,dusk&sig=1103',
+  lounge: 'https://source.unsplash.com/1800x1300/?casino-lounge,night,amber,felt-table&sig=1104',
+  aviation: 'https://source.unsplash.com/1800x1300/?private-jet,runway,luxury-arrival&sig=1105',
+  entrance: 'https://source.unsplash.com/1800x1300/?casino-hotel,entrance,night,valet&sig=1106',
+  vipDoor: 'https://source.unsplash.com/1800x1300/?vip-door,casino-host,night,luxury&sig=1107',
+  suite: 'https://source.unsplash.com/1800x1300/?luxury-suite,city-skyline,night,las-vegas&sig=1108',
+  dining: 'https://source.unsplash.com/1800x1300/?luxury-restaurant,casino-resort,night&sig=1109',
+  coast: 'https://source.unsplash.com/1800x1300/?coastal-resort,night,luxury&sig=1110',
+  poolNightAlt: 'https://source.unsplash.com/1800x1300/?las-vegas,pool,night,resort,lights&sig=1111',
+  worldMap:
+    'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 900%22%3E%3Crect width=%221200%22 height=%22900%22 fill=%22%23080705%22/%3E%3Cg fill=%22none%22 stroke=%22%23c8a96a%22 stroke-opacity=%22.28%22 stroke-width=%221%22%3E%3Cpath d=%22M140 330c120-90 250-70 330-25s170 35 270-30 225-30 320 55%22/%3E%3Cpath d=%22M130 505c145-60 275-45 390 8s235 55 360-10 180-45 260 10%22/%3E%3Cpath d=%22M210 680c120-45 265-25 380 20s220 24 330-25 168-25 220 10%22/%3E%3C/g%3E%3Cg fill=%22%23c8a96a%22 font-family=%22Inter,Arial,sans-serif%22 font-size=%2228%22 font-weight=%22700%22 letter-spacing=%223%22%3E%3Ccircle cx=%22255%22 cy=%22430%22 r=%2210%22/%3E%3Ctext x=%22282%22 y=%22439%22%3ELAS VEGAS%3C/text%3E%3Ccircle cx=%22568%22 cy=%22366%22 r=%2210%22/%3E%3Ctext x=%22595%22 y=%22375%22%3EMONTE CARLO%3C/text%3E%3Ccircle cx=%22472%22 cy=%22536%22 r=%2210%22/%3E%3Ctext x=%22499%22 y=%22545%22%3ETHE BAHAMAS%3C/text%3E%3Ccircle cx=%22908%22 cy=%22512%22 r=%2210%22/%3E%3Ctext x=%22935%22 y=%22521%22%3EMACAU%3C/text%3E%3Ccircle cx=%22938%22 cy=%22620%22 r=%2210%22/%3E%3Ctext x=%22965%22 y=%22629%22%3ESINGAPORE%3C/text%3E%3Ccircle cx=%22396%22 cy=%22612%22 r=%2210%22/%3E%3Ctext x=%22423%22 y=%22621%22%3ECARIBBEAN%3C/text%3E%3C/g%3E%3C/svg%3E',
 };
 
 const experienceCards = [
@@ -43,19 +43,16 @@ const experienceCards = [
     title: 'Curated Destinations',
     copy: 'Casino resorts, cruise lines, and private gaming destinations. Every property vetted.',
     image: img.resort,
-    icon: Sailboat,
   },
   {
     title: 'Exclusive Access',
     copy: 'Member-only rates, gaming credits, and VIP floor access. Not available to the public.',
     image: img.lounge,
-    icon: Ticket,
   },
   {
     title: 'Elevated Travel',
     copy: 'Private arrival coordination, suite upgrades, and discreet guest services.',
-    image: img.aviation,
-    icon: Plane,
+    image: img.suite,
   },
 ];
 
@@ -64,19 +61,19 @@ const circularItems = [
     name: 'Seamless Arrival',
     designation: 'The LuckEscape Experience',
     quote: 'The experience is designed around polished coordination: arrival, stay, curated access, and subtle communication without clutter or casino noise. Every founding member arrival is personally coordinated. We handle the details so the casino floor is the first thing on their mind.',
-    src: img.yacht,
+    src: img.entrance,
   },
   {
     name: "Where We're Launching",
     designation: 'Founding Destination Partners',
     quote: 'Our first wave of destinations spans casino cruise lines, Caribbean resorts, and European gaming destinations. Founding casino partners are confirmed before public launch. Partnership inquiries are currently open.',
-    src: img.cruise,
+    src: img.worldMap,
   },
   {
     name: 'Private Access',
     designation: 'Founding member priority',
     quote: 'Early members receive first visibility into limited launch offers, priority booking windows, private destination privileges, and future VIP perks. 4,847 founding members and growing.',
-    src: img.suite,
+    src: img.vipDoor,
   },
 ];
 
@@ -89,7 +86,7 @@ const destinationCards = [
     tags: ['Cruise', 'Private'],
     description: 'A refined ocean itinerary with curated lounge access and discreet member coordination.',
     pricePerNight: 0,
-    images: [img.cruise, img.yacht, img.coast],
+    images: [img.cruise, img.coast, img.aviation],
   },
   {
     title: 'Casino Resort Retreat',
@@ -99,7 +96,7 @@ const destinationCards = [
     tags: ['Resort', 'Luxury'],
     description: 'A premium resort-style launch concept built for aspirational travel and invitation-only energy.',
     pricePerNight: 0,
-    images: [img.resort, img.suite, img.dining],
+    images: [img.poolNightAlt, img.dining, img.suite],
   },
   {
     title: 'Private Arrival Experience',
@@ -171,7 +168,7 @@ function ConceptSection() {
   return (
    <ScrollExpandMedia
   mediaSrc="/videos/luckescape-hero.mp4"
-  bgImageSrc={img.resort}
+  bgImageSrc={img.poolTower}
   title="The platform casino players have been waiting for."
 >
       <div id="concept" className="grid gap-10 border border-ink/10 bg-white/64 p-8 shadow-editorial backdrop-blur-xl md:grid-cols-[0.85fr_1.15fr] md:p-12">
@@ -200,7 +197,7 @@ function InvitationDossier() {
     <section className="relative z-10 px-4 py-20 md:px-8 md:py-28">
       <div className="mx-auto grid max-w-7xl gap-10 border border-white/14 bg-black/46 p-5 shadow-card backdrop-blur-xl md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
         <Reveal className="relative min-h-[420px] overflow-hidden">
-          <img src={img.lounge} alt="Private casino lounge" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={img.resort} alt="Casino resort pool at night" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.84)),linear-gradient(90deg,rgba(0,0,0,0.62),transparent)]" />
           <div className="relative z-10 flex h-full min-h-[420px] flex-col justify-between p-7">
             <div>
@@ -239,7 +236,7 @@ function ExperienceSection() {
         </Reveal>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {experienceCards.map(({ title, copy, image, icon: Icon }, index) => (
+          {experienceCards.map(({ title, copy, image }, index) => (
             <Reveal key={title}>
               <motion.article
                 whileHover={{ y: -10 }}
@@ -250,9 +247,6 @@ function ExperienceSection() {
                 <div className="absolute inset-3 bg-gradient-to-t from-ink/72 via-ink/16 to-transparent" />
                 <div className="absolute left-7 right-7 top-7 flex items-center justify-between">
                   <span className="border border-white/35 bg-white/18 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur-md">0{index + 1}</span>
-                  <span className="grid h-11 w-11 place-items-center border border-white/25 bg-white/14 text-white backdrop-blur-md">
-                    <Icon className="h-5 w-5" />
-                  </span>
                 </div>
                 <div className="absolute bottom-8 left-7 right-7 text-pearl">
                   <h3 className="font-serif text-4xl leading-none tracking-[-0.05em]">{title}</h3>
@@ -304,7 +298,7 @@ function FoundingMembersSection() {
           <div className="mt-9 grid gap-3 sm:grid-cols-2">
             {benefits.map((benefit) => (
               <div key={benefit} className="flex items-center gap-3 border border-ink/10 bg-white/58 px-4 py-3 backdrop-blur-xl">
-                <Star className="h-4 w-4 fill-champagne text-champagne" />
+                <Diamond className="h-4 w-4 text-champagne" />
                 <span className="text-sm text-ink">{benefit}</span>
               </div>
             ))}
@@ -441,10 +435,7 @@ function Footer() {
 }
 
 export default function App() {
-  const [showLoader, setShowLoader] = useState(true);
-  const [showIntro, setShowIntro] = useState(false);
   const [showPartnerBar, setShowPartnerBar] = useState(false);
-  const [introKey, setIntroKey] = useState(0);
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -452,18 +443,6 @@ export default function App() {
     }
 
     window.scrollTo(0, 0);
-
-    const timer = window.setTimeout(() => {
-      setShowLoader(false);
-
-      window.setTimeout(() => {
-        window.scrollTo(0, 0);
-        setIntroKey(Date.now());
-        setShowIntro(true);
-      }, 120);
-    }, 2600);
-
-    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -475,12 +454,9 @@ export default function App() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030302] text-pearl">
-      <LuckEscapeLoader show={showLoader} />
-
-      {showIntro && <LogoScrollIntro key={introKey} />}
-
       <div id="site-start" className="dark-theme relative">
         <GlobalMovingImage />
+        <LogoScrollIntro />
         <HeaderBrand />
         <GradientMenu />
         <HorizonHeroSection />
@@ -492,12 +468,17 @@ export default function App() {
         <FoundingMembersSection />
         <PaymentCardPageSection />
         <CountdownBanner />
-        <GuestListSection />
-        <Footer />
+        <div
+          className="relative z-10 bg-cover bg-center"
+          style={{ backgroundImage: `linear-gradient(rgba(3,3,2,0.60), rgba(3,3,2,0.60)), url(${CLOSING_HERO_IMAGE})` }}
+        >
+          <GuestListSection />
+          <Footer />
+        </div>
 
         <button
           onClick={() => scrollToSection('#guest-list')}
-          className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-pearl shadow-glow transition hover:-translate-y-0.5 md:hidden"
+          className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-champagne px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink shadow-glow transition hover:-translate-y-0.5 md:hidden"
         >
           Join <Waves className="h-4 w-4" />
         </button>

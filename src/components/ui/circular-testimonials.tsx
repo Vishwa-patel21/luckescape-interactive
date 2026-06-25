@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,29 +10,10 @@ export interface Testimonial {
   src: string;
 }
 
-function calculateGap(width: number) {
-  const minWidth = 800;
-  const maxWidth = 1360;
-  const minGap = 46;
-  const maxGap = 82;
-  if (width <= minWidth) return minGap;
-  if (width >= maxWidth) return maxGap;
-  return minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth));
-}
-
 export function CircularTestimonials({ testimonials, autoplay = true }: { testimonials: Testimonial[]; autoplay?: boolean }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(1200);
-  const imageContainerRef = useRef<HTMLDivElement | null>(null);
   const active = testimonials[activeIndex];
   const total = testimonials.length;
-
-  useEffect(() => {
-    const update = () => setContainerWidth(imageContainerRef.current?.offsetWidth ?? 1200);
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
 
   useEffect(() => {
     if (!autoplay) return;
@@ -40,21 +21,15 @@ export function CircularTestimonials({ testimonials, autoplay = true }: { testim
     return () => window.clearInterval(id);
   }, [autoplay, total]);
 
-  const gap = useMemo(() => calculateGap(containerWidth), [containerWidth]);
-
   function getStyle(index: number): React.CSSProperties {
     const isActive = index === activeIndex;
-    const isLeft = (activeIndex - 1 + total) % total === index;
-    const isRight = (activeIndex + 1) % total === index;
     if (isActive) return { opacity: 1, zIndex: 4, transform: 'translateX(0) translateY(0) scale(1)' };
-    if (isLeft) return { opacity: 1, zIndex: 3, transform: `translateX(-${gap}px) translateY(-${gap * 0.68}px) scale(0.84) rotate(-4deg)` };
-    if (isRight) return { opacity: 1, zIndex: 3, transform: `translateX(${gap}px) translateY(-${gap * 0.68}px) scale(0.84) rotate(4deg)` };
-    return { opacity: 0, zIndex: 0, transform: 'translateY(20px) scale(0.72)', pointerEvents: 'none' };
+    return { opacity: 0, zIndex: 0, transform: 'translateX(0) translateY(0) scale(1)', pointerEvents: 'none' };
   }
 
   return (
     <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-      <div ref={imageContainerRef} className="relative mx-auto h-[400px] w-full max-w-md perspective-1200">
+      <div className="relative mx-auto h-[400px] w-full max-w-md overflow-hidden">
         {testimonials.map((item, index) => (
           <img
             key={item.src}
