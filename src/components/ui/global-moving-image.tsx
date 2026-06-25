@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 export const LUXURY_HERO_IMAGE =
-  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop';
+  'https://source.unsplash.com/2400x1600/?las-vegas-strip,aerial,night';
 
 function usePointerRatio() {
   const [position, setPosition] = useState({ x: 0.5, y: 0.5 });

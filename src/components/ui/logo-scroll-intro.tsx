@@ -58,10 +58,10 @@ export function LogoScrollIntro() {
             backgroundImage: `url(${LUXURY_HERO_IMAGE})`,
             scale: bgScale,
           }}
-          className="absolute inset-[-10%] bg-cover bg-center opacity-70 blur-[4px]"
+          className="absolute inset-[-10%] bg-cover bg-center opacity-82 blur-[2px]"
         />
 
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,2,0.70),rgba(3,3,2,0.46)_45%,rgba(3,3,2,0.92))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,2,0.50),rgba(3,3,2,0.34)_45%,rgba(3,3,2,0.82))]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(200,169,106,0.16),rgba(3,3,2,0.52)_44%,rgba(3,3,2,0.96)_82%)]" />
       </motion.div>
 

@@ -82,7 +82,7 @@ export function PlaceCard({
           <h3 className="font-serif text-3xl leading-none tracking-[-0.04em] text-ink">{title}</h3>
           {isTopRated ? <Badge>Launch Destination</Badge> : null}
         </div>
-        <p className="mt-3 text-sm text-smoke">{dateRange} • {hostType}</p>
+        <p className="mt-3 text-sm text-smoke">{dateRange} - {hostType}</p>
         <p className="mt-5 text-sm leading-7 text-smoke">{description}</p>
         <div className="mt-6 flex items-center justify-between gap-4">
           <p className="text-sm font-semibold text-ink">Invitation only</p>

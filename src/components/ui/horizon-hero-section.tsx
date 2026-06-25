@@ -23,7 +23,11 @@ function createGlowTexture() {
   return new THREE.CanvasTexture(canvas);
 }
 
-export function HorizonHeroSection() {
+type HorizonHeroSectionProps = {
+  onPartnerInquiry?: () => void;
+};
+
+export function HorizonHeroSection({ onPartnerInquiry }: HorizonHeroSectionProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const progressRef = useRef(0);
   const pointerRef = useRef({ x: 0, y: 0 });
@@ -283,7 +287,7 @@ const fadeUpVariants = {
   return (
     <section
   id="home"
-  className="relative isolate min-h-screen overflow-hidden px-5 pb-16 pt-32 sm:px-8 lg:px-12"
+  className="relative isolate min-h-screen overflow-hidden bg-[#030302] px-5 pb-16 pt-32 sm:px-8 lg:px-12"
 >
       <canvas
         ref={canvasRef}
@@ -355,7 +359,7 @@ const fadeUpVariants = {
     className="mx-auto mt-7 max-w-2xl text-base leading-7 text-white/74 md:text-lg md:leading-8"
   >
     Luxury casino travel for players who prefer quiet privilege over noise.
-    Founding members receive first visibility into curated resorts, cruises,
+    Founding members receive first access to curated resorts, cruises,
     and invitation-only gaming destinations.
   </motion.p>
 
@@ -375,7 +379,7 @@ const fadeUpVariants = {
           .getElementById('guest-list')
           ?.scrollIntoView({ behavior: 'smooth' })
       }
-      className="group relative inline-flex h-14 items-center justify-center overflow-hidden bg-[#11100d] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_45px_rgba(17,16,13,0.18)] transition duration-300"
+      className="group relative inline-flex h-14 items-center justify-center overflow-hidden bg-[#c8a96a] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#11100d] shadow-[0_18px_45px_rgba(200,169,106,0.26)] transition duration-300"
     >
       <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-[120%]" />
 
@@ -392,12 +396,8 @@ const fadeUpVariants = {
         backgroundColor: 'rgba(255,255,255,0.86)',
       }}
       whileTap={{ scale: 0.97 }}
-      onClick={() =>
-        document
-          .getElementById('partners')
-          ?.scrollIntoView({ behavior: 'smooth' })
-      }
-      className="inline-flex h-14 items-center justify-center border border-white/30 bg-white/10 px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl transition duration-300"
+      onClick={onPartnerInquiry}
+      className="inline-flex h-14 items-center justify-center border border-[#c8a96a]/65 bg-black/28 px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#f7f2e8] shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl transition duration-300"
     >
       Partner With Us
     </motion.button>

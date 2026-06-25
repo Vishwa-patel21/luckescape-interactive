@@ -1,16 +1,17 @@
 import { FormEvent, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, User } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function GuestListForm() {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
+  const [game, setGame] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!firstName.trim() || !email.trim()) return;
+    if (!firstName.trim() || !email.trim() || !game.trim()) return;
     setSubmitted(true);
   }
 
@@ -19,31 +20,43 @@ export function GuestListForm() {
       <form onSubmit={submit} className="border border-ink/10 bg-white/60 p-3 shadow-editorial backdrop-blur-xl">
         <div className="grid gap-3 md:grid-cols-[0.9fr_1.1fr]">
           <label className="relative block">
-            <User className="pointer-events-none absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-champagne" />
             <input
               required
-              className="luxury-input h-14 w-full rounded-none border border-ink/10 bg-porcelain/90 pl-12 pr-5 text-sm text-ink outline-none transition focus:border-champagne"
+              className="luxury-input h-14 w-full rounded-none border border-ink/10 bg-porcelain/90 px-5 text-sm text-ink outline-none transition focus:border-champagne"
               placeholder="First Name"
               value={firstName}
               onChange={(event) => setFirstName(event.target.value)}
             />
           </label>
           <label className="relative block">
-            <Mail className="pointer-events-none absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-champagne" />
             <input
               required
               type="email"
-              className="luxury-input h-14 w-full rounded-none border border-ink/10 bg-porcelain/90 pl-12 pr-5 text-sm text-ink outline-none transition focus:border-champagne"
+              className="luxury-input h-14 w-full rounded-none border border-ink/10 bg-porcelain/90 px-5 text-sm text-ink outline-none transition focus:border-champagne"
               placeholder="Email Address"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
           </label>
         </div>
+        <select
+          required
+          className="luxury-input mt-3 h-14 w-full rounded-none border border-ink/10 bg-porcelain/90 px-5 text-sm text-ink outline-none transition focus:border-champagne"
+          value={game}
+          onChange={(event) => setGame(event.target.value)}
+        >
+          <option value="">What's your game?</option>
+          <option value="Slots">Slots</option>
+          <option value="Blackjack">Blackjack</option>
+          <option value="Poker">Poker</option>
+          <option value="Roulette">Roulette</option>
+          <option value="All of the above">All of the above</option>
+        </select>
         <Button type="submit" size="lg" className="mt-3 w-full">
           Claim Your Invitation <ArrowRight className="h-4 w-4" />
         </Button>
-        <p className="mt-4 pb-2 text-center text-xs text-smoke">No spam. Invitation updates only.</p>
+        <p className="mt-4 text-center text-xs text-smoke">No spam. Invitation updates only.</p>
+        <p className="pb-2 pt-2 text-center text-xs text-smoke">We'll reach out personally when your invitation window opens.</p>
       </form>
       <motion.div
         initial={false}

@@ -8,9 +8,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-ink text-pearl hover:-translate-y-0.5 hover:shadow-glow',
+        default: 'bg-champagne text-ink hover:-translate-y-0.5 hover:shadow-glow',
         champagne: 'bg-champagne text-ink hover:-translate-y-0.5 hover:shadow-glow',
-        outline: 'border border-ink/15 bg-white/55 text-ink backdrop-blur-md hover:border-champagne hover:bg-white/75',
+        outline: 'border border-champagne/45 bg-black/28 text-pearl backdrop-blur-md hover:border-champagne hover:bg-black/45',
         ghost: 'text-ink hover:bg-ink/5',
         glass: 'border border-white/45 bg-white/25 text-pearl backdrop-blur-xl hover:bg-white/35',
       },

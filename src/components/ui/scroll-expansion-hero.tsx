@@ -6,10 +6,11 @@ interface ScrollExpandMediaProps {
   bgImageSrc: string;
   title: string;
   eyebrow?: string;
+  imageOverlayText?: string;
   children?: ReactNode;
 }
 
-export default function ScrollExpandMedia({ mediaSrc, bgImageSrc, title, eyebrow, children }: ScrollExpandMediaProps) {
+export default function ScrollExpandMedia({ mediaSrc, bgImageSrc, title, eyebrow, imageOverlayText, children }: ScrollExpandMediaProps) {
   const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const smooth = useSpring(scrollYProgress, { stiffness: 72, damping: 22 });
@@ -37,6 +38,13 @@ export default function ScrollExpandMedia({ mediaSrc, bgImageSrc, title, eyebrow
               style={{ scale: useTransform(smooth, [0, 1], [1.08, 1]) }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-white/10" />
+            {imageOverlayText ? (
+              <div className="absolute inset-0 grid place-items-center px-8 text-center">
+                <p className="max-w-3xl text-[12px] font-semibold uppercase tracking-[0.32em] text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.9)] md:text-base">
+                  {imageOverlayText}
+                </p>
+              </div>
+            ) : null}
           </div>
         </motion.div>
 
