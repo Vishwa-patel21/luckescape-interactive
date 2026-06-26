@@ -68,18 +68,18 @@ function visualAsset(title: string, variant: string, accent = '#c8a96a') {
 }
 
 const img = {
-  cruise: visualAsset('OCEAN LINER AT SEA', 'liner'),
-  resort: visualAsset('CASINO POOL AT NIGHT', 'pool', '#4fd8ff'),
-  poolTower: visualAsset('POOL + CASINO TOWER', 'tower'),
-  lounge: visualAsset('CASINO LOUNGE INTERIOR', 'lounge'),
-  aviation: visualAsset('PRIVATE ARRIVAL', 'default'),
-  entrance: visualAsset('CASINO HOTEL ENTRANCE', 'entrance'),
-  vipDoor: visualAsset('HOST OPENING VIP DOOR', 'door'),
-  suite: visualAsset('SUITE WITH CASINO SKYLINE', 'suite'),
-  dining: visualAsset('LUXURY RESORT DINING', 'default'),
-  coast: visualAsset('COASTAL CASINO ESCAPE', 'default', '#6fb9d4'),
-  poolNightAlt: visualAsset('CASINO POOL NIGHT ANGLE', 'pool', '#d46fd0'),
-  worldMap: visualAsset('FOUNDING DESTINATION MAP', 'map'),
+  cruise: '/images/luckescape/10.jpg',
+  resort: '/images/luckescape/3.jpg',
+  poolTower: '/images/luckescape/pool-tower.jpg',
+  lounge: '/images/luckescape/5.jpg',
+  aviation: '/images/luckescape/1.jpg',
+  entrance: '/images/luckescape/7.jpg',
+  vipDoor: '/images/luckescape/8.jpg',
+  suite: '/images/luckescape/6.jpg',
+  dining: '/images/luckescape/5.jpg',
+  coast: '/images/luckescape/4.jpg',
+  poolNightAlt: '/images/luckescape/pool-alt.jpg',
+  worldMap: '/images/luckescape/9.jpg',
   tripCard: visualAsset('LUCKESCAPE TRIP CARD', 'trip'),
 };
 

@@ -3,3 +3,5 @@ dist/
 .vercel/
 *.tsbuildinfo
 vite-dev*.log
+black_gold_website_image_pack/
+black_gold_website_image_pack.zip

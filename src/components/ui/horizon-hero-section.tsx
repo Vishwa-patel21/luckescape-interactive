@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { RevealText } from '@/components/ui/reveal-text';
 
+const STARFIELD_IMAGE = '/images/luckescape/2.jpg';
+
 function createGlowTexture() {
   const canvas = document.createElement('canvas');
   canvas.width = 256;
@@ -285,10 +287,16 @@ const fadeUpVariants = {
   id="home"
   className="relative isolate min-h-screen overflow-hidden bg-[#030302] px-5 pb-16 pt-32 sm:px-8 lg:px-12"
 >
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${STARFIELD_IMAGE})` }}
+      />
+      <div className="absolute inset-0 z-0 bg-black/58" />
+
       <canvas
         ref={canvasRef}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-80"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-65"
       />
 
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_70%_26%,rgba(235,205,145,0.20),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.82),rgba(0,0,0,0.58)_52%,rgba(0,0,0,0.86))]" />
