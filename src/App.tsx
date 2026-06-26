@@ -72,6 +72,7 @@ const img = {
   cruise: '/images/luckescape/10.jpg',
   resort: '/images/luckescape/3.jpg',
   casinoPool: '/images/luckescape/casino-pool.webp',
+  casinoPoolStrip: '/images/luckescape/casino-pool-strip.jpg',
   poolTower: '/images/luckescape/pool-tower.jpg',
   lounge: '/images/luckescape/5.jpg',
   aviation: '/images/luckescape/1.jpg',
@@ -134,9 +135,9 @@ const destinationCards = [
     hostType: 'Cruise access',
     rating: 4.9,
     tags: ['Cruise', 'Private'],
-    description: 'A refined ocean itinerary with curated lounge access and discreet member coordination.',
+    description: 'A refined ocean itinerary with curated gaming lounge access and discreet member coordination.',
     pricePerNight: 0,
-    images: [img.cruise, img.coast, img.aviation],
+    images: [img.cruise, img.aviation, img.coast],
   },
   {
     title: 'Casino Resort Retreat',
@@ -144,9 +145,9 @@ const destinationCards = [
     hostType: 'Resort access',
     rating: 4.8,
     tags: ['Resort', 'Luxury'],
-    description: 'A premium resort-style launch concept built for aspirational travel and invitation-only energy.',
+    description: 'Curated resort stays with gaming floor access, suite priority, and member-only credit packages.',
     pricePerNight: 0,
-    images: [img.poolNightAlt, img.dining, img.suite],
+    images: [img.casinoPoolStrip, img.poolNightAlt, img.suite],
   },
   {
     title: 'Private Arrival Experience',
@@ -154,7 +155,7 @@ const destinationCards = [
     hostType: 'VIP path',
     rating: 4.9,
     tags: ['VIP', 'Travel'],
-    description: 'Private-arrival styling with editorial visuals, card-led access, and simple guest-list conversion.',
+    description: 'From tarmac to table. Arrival coordination, VIP check-in, and first-night gaming access arranged in advance.',
     pricePerNight: 0,
     images: [img.aviation, img.lounge, img.coast],
   },
@@ -353,6 +354,9 @@ function DestinationPreview() {
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {destinationCards.map((card) => <PlaceCard key={card.title} {...card} isTopRated />)}
         </div>
+        <p className="mt-8 text-center text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">
+          Each destination represents a founding partner slot. Limited properties per region.
+        </p>
       </div>
     </section>
   );
