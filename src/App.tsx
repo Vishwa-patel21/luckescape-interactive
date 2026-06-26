@@ -71,7 +71,7 @@ function visualAsset(title: string, variant: string, accent = '#c8a96a') {
 const img = {
   cruise: '/images/luckescape/10.jpg',
   resort: '/images/luckescape/3.jpg',
-  casinoPool: '/images/luckescape/casino-pool.jpeg',
+  casinoPool: '/images/luckescape/casino-pool.webp',
   poolTower: '/images/luckescape/pool-tower.jpg',
   lounge: '/images/luckescape/5.jpg',
   aviation: '/images/luckescape/1.jpg',
@@ -221,22 +221,35 @@ function ConceptSection() {
 >
       <div id="concept" className="grid gap-10 border border-ink/10 bg-white/64 p-8 shadow-editorial backdrop-blur-xl md:grid-cols-[0.85fr_1.15fr] md:p-12">
         <div>
-          <Badge>Invitation platform</Badge>
+          <Badge>How it works</Badge>
           <h3 className="mt-6 font-serif text-4xl leading-none tracking-[-0.04em] text-ink md:text-6xl">Casino travel without the casino noise.</h3>
         </div>
-        <div className="space-y-5 text-lg leading-8 text-smoke">
+        <div className="space-y-5 text-lg leading-8 text-white/90">
           <p>
             LuckEscape is a private membership platform built exclusively for casino travelers. We curate luxury gaming experiences - casino resorts, ocean cruises, and iconic destinations - and deliver them to a growing community of high-intent players who are ready to book.
           </p>
-          <p>
+          <p className="border-l-2 border-champagne pl-5">
             We don't sell noise. We sell access.
           </p>
           <p>
             Our guest list is growing daily. Casino launch partners receive guaranteed first-mover positioning before we open bookings to the public.
           </p>
+          <p className="font-serif text-2xl italic leading-8 text-white/90">
+            Our casino partners make the experience possible. You just have to know where to look.
+          </p>
         </div>
       </div>
     </ScrollExpandMedia>
+  );
+}
+
+function DestinationMarqueeStrip() {
+  return (
+    <div className="relative z-10 overflow-hidden border-y border-champagne/28 bg-black/52 py-5 backdrop-blur-md">
+      <p className="whitespace-nowrap text-center text-[11px] font-semibold uppercase tracking-[0.36em] text-champagne md:text-sm md:tracking-[0.48em]">
+        Las Vegas &middot; Monte Carlo &middot; The Bahamas &middot; Macau &middot; Singapore &middot; Caribbean
+      </p>
+    </div>
   );
 }
 
@@ -619,6 +632,7 @@ export default function App() {
         <HorizonHeroSection onPartnerInquiry={() => setPartnerModalOpen(true)} />
         <Marquee />
         <InvitationDossier />
+        <DestinationMarqueeStrip />
         <ConceptSection />
         <ExperienceSection />
         <DestinationPreview />
