@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Crown,
   Diamond,
-  ExternalLink,
   Mail,
   ShieldCheck,
   X,
@@ -455,6 +454,9 @@ function GuestListSection() {
         <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-smoke">Private launch access. Limited invitations.</p>
       </Reveal>
       <Reveal className="mt-10">
+        <p className="mb-5 text-center text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">
+          Join 4,847 travelers already on the list.
+        </p>
         <GuestListForm />
       </Reveal>
     </section>
@@ -494,9 +496,6 @@ function Footer() {
             <p className="mt-3 text-sm text-smoke">Something exclusive is already here.</p>
           </div>
           <div className="flex flex-col gap-3 text-sm text-smoke md:items-end">
-            <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-ink">
-              <ExternalLink className="h-4 w-4" /> Instagram placeholder
-            </a>
             <a href="mailto:partners@luckescape.com" className="inline-flex items-center gap-2 hover:text-ink">
               <Mail className="h-4 w-4" /> Casino & Resort Partnerships: partners@luckescape.com
             </a>
