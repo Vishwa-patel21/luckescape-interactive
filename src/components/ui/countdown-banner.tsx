@@ -6,7 +6,7 @@ import { scrollToSection } from '@/components/ui/gradient-menu';
 const stats = [
   ['4,847+', 'Travelers on the guest list'],
   ['12', 'Destinations in active curation'],
-  ['Q3 2025', 'First booking window'],
+  ['First Booking Window', 'Member launch access'],
 ];
 
 type CountdownBannerProps = {
@@ -15,13 +15,13 @@ type CountdownBannerProps = {
 
 export function CountdownBanner({ onPartnerInquiry }: CountdownBannerProps) {
   return (
-    <section id="partners" className="relative z-10 bg-[#f3e7d0] px-4 py-20 text-[#15120e] md:px-8">
+    <section id="partners" className="relative z-10 bg-[#f1dfbd] px-4 py-20 text-[#15120e] md:px-8">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.8 }}
-        className="mx-auto max-w-6xl overflow-hidden border border-champagne/40 bg-[#fff8e8]/84 p-8 text-center shadow-editorial backdrop-blur-xl md:p-14"
+        className="mx-auto max-w-6xl overflow-hidden border border-champagne/45 bg-[#fff7e4]/92 p-8 text-center shadow-editorial md:p-14"
       >
         <p className="text-[10px] font-semibold uppercase tracking-[0.36em] text-champagne">Founding casino partner window</p>
         <h2 className="mt-5 font-serif text-5xl leading-none tracking-[-0.05em] text-[#15120e] md:text-7xl">The demand is already here.</h2>
@@ -38,6 +38,12 @@ export function CountdownBanner({ onPartnerInquiry }: CountdownBannerProps) {
         </div>
         <p className="mt-9 text-[10px] font-semibold uppercase tracking-[0.36em] text-champagne">
           Founding casino partner window is now open
+        </p>
+        <p className="mx-auto mt-4 max-w-xl text-[10px] font-semibold uppercase tracking-[0.28em] text-[#5f5748]">
+          Fewer than 8 founding partner slots remaining.
+        </p>
+        <p className="mx-auto mt-8 max-w-2xl font-serif text-2xl italic leading-8 text-[#15120e]">
+          Our members tell us what they want to play. Our partners know exactly who they're getting.
         </p>
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
           <Button variant="champagne" onClick={() => scrollToSection('#guest-list')}>Join the Guest List <ArrowRight className="h-4 w-4" /></Button>
