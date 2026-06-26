@@ -371,22 +371,26 @@ function FoundingMembersSection() {
           <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Permanent founding status</p>
           <h2 className="mt-5 font-serif text-5xl leading-none tracking-[-0.055em] text-ink md:text-8xl">Become a Founding Member.</h2>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-smoke">
-            We are opening a limited number of early invitations ahead of our first booking window. Over 4,800 travelers have already joined. Founding members receive access before the public.
+            We are opening a limited number of early invitations ahead of our first booking window. 4,847+ travelers have already joined. Founding members receive access before the public.
           </p>
           <div className="mt-9 grid gap-3 sm:grid-cols-2">
             {benefits.map((benefit) => (
               <div key={benefit} className="flex items-center gap-3 border border-ink/10 bg-white/58 px-4 py-3 backdrop-blur-xl">
-                <Diamond className="h-4 w-4 text-champagne" />
+                <span className="text-sm leading-none text-champagne" aria-hidden="true">◆</span>
                 <span className="text-sm text-ink">{benefit}</span>
               </div>
             ))}
           </div>
+          <p className="mt-5 text-sm font-medium text-smoke">No payment required. Membership by invitation.</p>
           <Button className="mt-10" size="lg" variant="champagne" onClick={() => scrollToSection('#guest-list')}>
             Claim Your Spot <ArrowRight className="h-4 w-4" />
           </Button>
         </Reveal>
-        <Reveal>
+        <Reveal className="space-y-5">
           <MembershipCard />
+          <p className="text-center text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">
+            LE · 0001 · PRIVATE — Founding member status is permanent.
+          </p>
         </Reveal>
       </div>
     </section>
