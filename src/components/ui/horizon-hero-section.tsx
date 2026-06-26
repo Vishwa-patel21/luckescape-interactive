@@ -25,7 +25,11 @@ function createGlowTexture() {
   return new THREE.CanvasTexture(canvas);
 }
 
-export function HorizonHeroSection() {
+type HorizonHeroSectionProps = {
+  onPartnerInquiry?: () => void;
+};
+
+export function HorizonHeroSection({ onPartnerInquiry }: HorizonHeroSectionProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const progressRef = useRef(0);
   const pointerRef = useRef({ x: 0, y: 0 });
@@ -383,7 +387,7 @@ const fadeUpVariants = {
           .getElementById('guest-list')
           ?.scrollIntoView({ behavior: 'smooth' })
       }
-      className="group relative inline-flex h-14 items-center justify-center overflow-hidden bg-[#c8a96a] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#11100d] shadow-[0_18px_45px_rgba(200,169,106,0.28)] transition duration-300"
+      className="group relative inline-flex h-14 items-center justify-center overflow-hidden bg-champagne px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-ink shadow-glow transition duration-300"
     >
       <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-[120%]" />
 
@@ -400,11 +404,7 @@ const fadeUpVariants = {
         backgroundColor: 'rgba(10,9,7,0.78)',
       }}
       whileTap={{ scale: 0.97 }}
-      onClick={() =>
-        document
-          .getElementById('partners')
-          ?.scrollIntoView({ behavior: 'smooth' })
-      }
+      onClick={onPartnerInquiry}
       className="inline-flex h-14 items-center justify-center border border-[#c8a96a]/70 bg-black/34 px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#d9bd79] shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-xl transition duration-300"
     >
       Partner With Us

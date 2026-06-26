@@ -9,7 +9,11 @@ const stats = [
   ['Q3 2025', 'First booking window'],
 ];
 
-export function CountdownBanner() {
+type CountdownBannerProps = {
+  onPartnerInquiry?: () => void;
+};
+
+export function CountdownBanner({ onPartnerInquiry }: CountdownBannerProps) {
   return (
     <section id="partners" className="relative z-10 bg-[#f3e7d0] px-4 py-20 text-[#15120e] md:px-8">
       <motion.div
@@ -37,7 +41,7 @@ export function CountdownBanner() {
         </p>
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
           <Button variant="champagne" onClick={() => scrollToSection('#guest-list')}>Join the Guest List <ArrowRight className="h-4 w-4" /></Button>
-          <Button variant="outline" className="text-[#15120e]" onClick={() => window.location.href = 'mailto:partners@luckescape.com'}>Partner With Us <ArrowRight className="h-4 w-4" /></Button>
+          <Button variant="outline" className="text-[#15120e]" onClick={onPartnerInquiry}>Partner With Us <ArrowRight className="h-4 w-4" /></Button>
         </div>
       </motion.div>
     </section>

@@ -6,6 +6,7 @@ import {
   ExternalLink,
   Mail,
   ShieldCheck,
+  X,
   Waves,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -117,7 +118,7 @@ const circularItems = [
   {
     name: 'Private Access',
     designation: 'Founding member priority',
-    quote: 'Early members receive first visibility into limited launch offers, priority booking windows, private destination privileges, and future VIP perks. 4,847 founding members and growing.',
+    quote: 'Early members receive first access to limited launch offers, priority booking windows, private destination privileges, and future VIP perks. 4,847 founding members and growing.',
     src: img.vipDoor,
   },
 ];
@@ -479,8 +480,114 @@ function Footer() {
   );
 }
 
+function PartnerInquiryModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open, onClose]);
+
+  useEffect(() => {
+    if (open) setSubmitted(false);
+  }, [open]);
+
+  if (!open) return null;
+
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center px-4 py-8" role="dialog" aria-modal="true" aria-labelledby="partner-inquiry-title">
+      <button className="absolute inset-0 bg-black/74 backdrop-blur-md" onClick={onClose} aria-label="Close partner inquiry modal" />
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 w-full max-w-xl border border-champagne/35 bg-[#11100d] p-5 text-pearl shadow-card md:p-8"
+      >
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 grid h-10 w-10 place-items-center border border-white/15 bg-white/5 text-white/72 transition hover:border-champagne/60 hover:text-champagne"
+          aria-label="Close partner inquiry modal"
+        >
+          <X className="h-4 w-4" />
+        </button>
+
+        <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Casino & resort partners</p>
+        <h2 id="partner-inquiry-title" className="mt-4 max-w-md font-serif text-4xl leading-none tracking-[-0.04em] text-pearl md:text-5xl">
+          Request a partner conversation.
+        </h2>
+
+        <form onSubmit={submit} className="mt-7 grid gap-4">
+          <label className="grid gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/58">
+            Property Name
+            <input
+              required
+              name="propertyName"
+              placeholder="e.g. MGM Grand Las Vegas"
+              className="h-12 border border-white/14 bg-white/8 px-4 text-base font-medium normal-case tracking-normal text-pearl outline-none transition placeholder:text-white/38 focus:border-champagne/70"
+            />
+          </label>
+          <label className="grid gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/58">
+            Your Role
+            <input
+              required
+              name="role"
+              placeholder="e.g. Director of Casino Marketing"
+              className="h-12 border border-white/14 bg-white/8 px-4 text-base font-medium normal-case tracking-normal text-pearl outline-none transition placeholder:text-white/38 focus:border-champagne/70"
+            />
+          </label>
+          <label className="grid gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/58">
+            Email Address
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="name@property.com"
+              className="h-12 border border-white/14 bg-white/8 px-4 text-base font-medium normal-case tracking-normal text-pearl outline-none transition placeholder:text-white/38 focus:border-champagne/70"
+            />
+          </label>
+          <label className="grid gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/58">
+            Message <span className="normal-case tracking-normal text-white/38">(optional)</span>
+            <textarea
+              name="message"
+              rows={4}
+              placeholder="Tell us about your property and what you're looking for"
+              className="resize-none border border-white/14 bg-white/8 px-4 py-3 text-base font-medium normal-case tracking-normal text-pearl outline-none transition placeholder:text-white/38 focus:border-champagne/70"
+            />
+          </label>
+
+          <Button type="submit" variant="champagne" size="lg" className="mt-2 w-full">
+            REQUEST PARTNER CONVERSATION →
+          </Button>
+          <p className="text-center text-sm text-white/58">We respond within 24 hours.</p>
+          {submitted && (
+            <p className="border border-champagne/30 bg-champagne/10 px-4 py-3 text-center text-sm font-medium text-champagne">
+              Thank you. Your partner inquiry has been received.
+            </p>
+          )}
+        </form>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function App() {
-  const [showPartnerBar, setShowPartnerBar] = useState(false);
+  const [partnerModalOpen, setPartnerModalOpen] = useState(false);
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -490,13 +597,6 @@ export default function App() {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    const updatePartnerBar = () => setShowPartnerBar(window.scrollY > window.innerHeight * 0.85);
-    updatePartnerBar();
-    window.addEventListener('scroll', updatePartnerBar, { passive: true });
-    return () => window.removeEventListener('scroll', updatePartnerBar);
-  }, []);
-
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030302] text-pearl">
       <div id="site-start" className="dark-theme relative">
@@ -504,7 +604,7 @@ export default function App() {
         <LogoScrollIntro />
         <HeaderBrand />
         <GradientMenu />
-        <HorizonHeroSection />
+        <HorizonHeroSection onPartnerInquiry={() => setPartnerModalOpen(true)} />
         <Marquee />
         <InvitationDossier />
         <ConceptSection />
@@ -512,7 +612,7 @@ export default function App() {
         <DestinationPreview />
         <FoundingMembersSection />
         <PaymentCardPageSection />
-        <CountdownBanner />
+        <CountdownBanner onPartnerInquiry={() => setPartnerModalOpen(true)} />
         <div
           className="relative z-10 bg-cover bg-center"
           style={{ backgroundImage: `linear-gradient(rgba(3,3,2,0.60), rgba(3,3,2,0.60)), url(${CLOSING_HERO_IMAGE})` }}
@@ -523,19 +623,19 @@ export default function App() {
 
         <button
           onClick={() => scrollToSection('#guest-list')}
-          className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-champagne px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink shadow-glow transition hover:-translate-y-0.5 md:hidden"
+          className="fixed bottom-16 right-5 z-50 inline-flex items-center gap-2 bg-champagne px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink shadow-glow transition hover:-translate-y-0.5 md:hidden"
         >
           Join <Waves className="h-4 w-4" />
         </button>
 
         <button
-          onClick={() => scrollToSection('#partners')}
-          className={`fixed inset-x-0 bottom-0 z-50 hidden h-10 items-center justify-center border-t border-champagne/25 bg-ink/94 text-[10px] font-semibold uppercase tracking-[0.28em] text-pearl shadow-card backdrop-blur-xl transition duration-300 md:flex ${
-            showPartnerBar ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-          }`}
+          onClick={() => setPartnerModalOpen(true)}
+          className="fixed inset-x-0 bottom-0 z-50 flex min-h-11 items-center justify-center border-t border-champagne/25 bg-ink/94 px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.22em] text-pearl shadow-card backdrop-blur-xl transition duration-300 hover:bg-ink md:h-10 md:py-0 md:tracking-[0.28em]"
         >
           Casino or Resort? <span className="mx-4 h-px w-8 bg-champagne/60" /> Partnership inquiries open
         </button>
+
+        <PartnerInquiryModal open={partnerModalOpen} onClose={() => setPartnerModalOpen(false)} />
       </div>
     </main>
   );
