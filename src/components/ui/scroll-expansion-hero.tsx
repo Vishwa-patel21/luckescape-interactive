@@ -37,6 +37,11 @@ export default function ScrollExpandMedia({ mediaSrc, bgImageSrc, title, eyebrow
               style={{ scale: useTransform(smooth, [0, 1], [1.08, 1]) }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-white/10" />
+            <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+              <p className="max-w-4xl text-sm font-semibold uppercase leading-7 tracking-[0.28em] text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.75)] md:text-xl md:leading-9 md:tracking-[0.36em]">
+                The only platform built to send players to your floor, not just your hotel.
+              </p>
+            </div>
           </div>
         </motion.div>
 

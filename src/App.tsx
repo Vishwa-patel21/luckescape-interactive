@@ -73,7 +73,7 @@ const img = {
   casinoPool: '/images/luckescape/casino-pool.webp',
   casinoPoolStrip: '/images/luckescape/casino-pool-strip.jpg',
   poolTower: '/images/luckescape/pool-tower.jpg',
-  lounge: '/images/luckescape/5.jpg',
+  lounge: '/images/luckescape/lounge.jpg',
   aviation: '/images/luckescape/1.jpg',
   entry: '/images/luckescape/entry.webp',
   entrance: '/images/luckescape/7.jpg',
@@ -633,8 +633,8 @@ export default function App() {
         <HorizonHeroSection onPartnerInquiry={() => setPartnerModalOpen(true)} />
         <Marquee />
         <InvitationDossier />
-        <DestinationMarqueeStrip />
         <ConceptSection />
+        <DestinationMarqueeStrip />
         <ExperienceSection />
         <DestinationPreview />
         <FoundingMembersSection />
