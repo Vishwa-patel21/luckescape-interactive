@@ -71,6 +71,7 @@ function visualAsset(title: string, variant: string, accent = '#c8a96a') {
 const img = {
   cruise: '/images/luckescape/10.jpg',
   resort: '/images/luckescape/3.jpg',
+  casinoPool: '/images/luckescape/casino-pool.jpeg',
   poolTower: '/images/luckescape/pool-tower.jpg',
   lounge: '/images/luckescape/5.jpg',
   aviation: '/images/luckescape/1.jpg',
@@ -176,6 +177,7 @@ const dossierItems = [
     label: 'Partner window',
     value: 'Open',
     copy: 'Casino and resort launch partners are being reviewed now.',
+    note: 'Applications reviewed within 48 hours.',
   },
 ];
 
@@ -243,11 +245,11 @@ function InvitationDossier() {
     <section className="relative z-10 px-4 py-20 md:px-8 md:py-28">
       <div className="mx-auto grid max-w-7xl gap-10 border border-white/14 bg-black/46 p-5 shadow-card backdrop-blur-xl md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
         <Reveal className="relative min-h-[420px] overflow-hidden">
-          <img src={img.resort} alt="Casino resort pool at night" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={img.casinoPool} alt="Casino resort pool at night with neon reflections" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.84)),linear-gradient(90deg,rgba(0,0,0,0.62),transparent)]" />
           <div className="relative z-10 flex h-full min-h-[420px] flex-col justify-between p-7">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Private club signal</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Platform in motion</p>
               <h2 className="mt-5 max-w-2xl font-serif text-5xl leading-none tracking-[-0.05em] text-pearl md:text-7xl">
                 An invitation list with momentum.
               </h2>
@@ -258,14 +260,24 @@ function InvitationDossier() {
           </div>
         </Reveal>
 
-        <Reveal className="grid gap-3 sm:grid-cols-2">
-          {dossierItems.map((item) => (
-            <div key={item.label} className="border border-white/12 bg-white/8 p-6 backdrop-blur-md">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-white/48">{item.label}</p>
-              <p className="mt-5 font-serif text-5xl leading-none text-champagne">{item.value}</p>
-              <p className="mt-5 text-sm leading-7 text-white/68">{item.copy}</p>
-            </div>
-          ))}
+        <Reveal className="flex flex-col gap-5">
+          <div className="grid gap-3 sm:grid-cols-2">
+            {dossierItems.map((item) => (
+              <div key={item.label} className="border border-white/12 bg-white/8 p-6 backdrop-blur-md">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-white/48">{item.label}</p>
+                <p className="mt-5 font-serif text-5xl leading-none text-champagne">{item.value}</p>
+                <p className="mt-5 text-sm leading-7 text-white/68">{item.copy}</p>
+                {'note' in item && item.note ? (
+                  <p className="mt-3 text-sm font-medium leading-7 text-champagne/86">{item.note}</p>
+                ) : null}
+              </div>
+            ))}
+          </div>
+          <div className="border-t border-champagne/50 pt-5">
+            <p className="font-serif text-xl italic leading-7 text-white/76">
+              The first booking window opens to founding members only. Casino partners confirmed before public access.
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>
