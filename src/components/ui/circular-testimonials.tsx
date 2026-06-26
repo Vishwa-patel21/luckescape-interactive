@@ -8,6 +8,7 @@ export interface Testimonial {
   name: string;
   designation: string;
   src: string;
+  fit?: 'cover' | 'contain';
 }
 
 export function CircularTestimonials({ testimonials, autoplay = true }: { testimonials: Testimonial[]; autoplay?: boolean }) {
@@ -29,13 +30,13 @@ export function CircularTestimonials({ testimonials, autoplay = true }: { testim
 
   return (
     <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-      <div className="relative mx-auto h-[400px] w-full max-w-md overflow-hidden">
+      <div className="relative mx-auto h-[400px] w-full max-w-xl overflow-hidden bg-black/35">
         {testimonials.map((item, index) => (
           <img
             key={item.src}
             src={item.src}
             alt={item.name}
-            className="absolute inset-0 h-full w-full object-cover shadow-card transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
+            className={`absolute inset-0 h-full w-full transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${item.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
             style={getStyle(index)}
           />
         ))}

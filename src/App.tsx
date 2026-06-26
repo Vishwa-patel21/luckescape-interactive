@@ -75,13 +75,15 @@ const img = {
   poolTower: '/images/luckescape/pool-tower.jpg',
   lounge: '/images/luckescape/5.jpg',
   aviation: '/images/luckescape/1.jpg',
+  entry: '/images/luckescape/entry.webp',
   entrance: '/images/luckescape/7.jpg',
+  vipAccess: '/images/luckescape/vip.jpg',
   vipDoor: '/images/luckescape/8.jpg',
   suite: '/images/luckescape/room.jpg',
   dining: '/images/luckescape/5.jpg',
   coast: '/images/luckescape/4.jpg',
   poolNightAlt: '/images/luckescape/pool-alt.jpg',
-  worldMap: '/images/luckescape/9.jpg',
+  worldMap: '/images/luckescape/map.png',
   tripCard: visualAsset('LUCKESCAPE TRIP CARD', 'trip'),
 };
 
@@ -108,19 +110,20 @@ const circularItems = [
     name: 'Seamless Arrival',
     designation: 'The LuckEscape Experience',
     quote: 'The experience is designed around polished coordination: arrival, stay, curated access, and subtle communication without clutter or casino noise. Every founding member arrival is personally coordinated. We handle the details so the casino floor is the first thing on their mind.',
-    src: img.entrance,
+    src: img.entry,
+  },
+  {
+    name: 'Private Access',
+    designation: 'Founding member priority',
+    quote: 'Early members receive first access to limited launch offers, priority booking windows, private destination privileges, and future VIP perks. 4,847 founding members and growing.',
+    src: img.vipAccess,
   },
   {
     name: "Where We're Launching",
     designation: 'Founding Destination Partners',
     quote: 'Our first wave of destinations spans casino cruise lines, Caribbean resorts, and European gaming destinations. Founding casino partners are confirmed before public launch. Partnership inquiries are currently open.',
     src: img.worldMap,
-  },
-  {
-    name: 'Private Access',
-    designation: 'Founding member priority',
-    quote: 'Early members receive first access to limited launch offers, priority booking windows, private destination privileges, and future VIP perks. 4,847 founding members and growing.',
-    src: img.vipDoor,
+    fit: 'contain' as const,
   },
 ];
 
