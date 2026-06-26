@@ -73,7 +73,7 @@ const img = {
   resort: '/images/luckescape/3.jpg',
   casinoPool: '/images/luckescape/casino-pool.webp',
   poolTower: '/images/luckescape/pool-tower.jpg',
-  lounge: '/images/luckescape/lounge.jpg',
+  lounge: '/images/luckescape/5.jpg',
   aviation: '/images/luckescape/1.jpg',
   entrance: '/images/luckescape/7.jpg',
   vipDoor: '/images/luckescape/8.jpg',
