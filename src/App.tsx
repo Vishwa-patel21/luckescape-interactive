@@ -397,60 +397,51 @@ function FoundingMembersSection() {
   );
 }
 
-function PaymentCardPageSection() {
+function PaymentCardPageSection({ onPartnerInquiry }: { onPartnerInquiry: () => void }) {
   return (
     <section id="card" className="relative z-10 px-4 py-24 md:px-8">
       <div className="mx-auto max-w-7xl overflow-hidden border border-ink/10 bg-white/58 p-5 shadow-editorial backdrop-blur-xl md:p-10">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <Reveal>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Access flow</p>
-            <h2 className="mt-5 font-serif text-5xl leading-none tracking-[-0.05em] text-ink md:text-7xl">Your access. On a card.</h2>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-smoke">
-              Members request access, receive review, and enter the launch window by invitation.
-            </p>
-            <div className="mt-9 grid gap-4 sm:grid-cols-3">
-              {[
-                ['01', 'Request'],
-                ['02', 'Review'],
-                ['03', 'Invite'],
-              ].map(([num, label]) => (
-                <div key={label} className="border border-ink/10 bg-pearl/70 p-5">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-champagne">{num}</p>
-                  <p className="mt-7 font-serif text-3xl text-ink">{label}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 text-sm italic leading-7 text-smoke">
-              Casino partners: your integration is handled separately. <button className="font-semibold text-champagne underline-offset-4 hover:underline" onClick={() => scrollToSection('#partners')}>Partner Inquiry</button>
-            </p>
-          </Reveal>
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-champagne">Your journey in</p>
+          <h2 className="mt-5 font-serif text-5xl leading-none tracking-[-0.05em] text-ink md:text-7xl">What a LuckEscape booking looks like.</h2>
+        </Reveal>
 
-          <Reveal>
-            <div className="border border-ink/10 bg-ink p-4 text-pearl shadow-card">
-              <div className="relative overflow-hidden bg-[linear-gradient(135deg,#15120e,#312716)] p-7">
-                <img src={img.tripCard} alt="LuckEscape trip card preview" className="absolute inset-0 h-full w-full object-cover opacity-70" />
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-champagne">Launch Access</p>
-                    <ShieldCheck className="h-5 w-5 text-champagne" />
-                  </div>
-                  <h3 className="mt-8 font-serif text-4xl leading-none">Guest List Card</h3>
-                  <div className="mt-8 grid gap-3">
-                    <div className="border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/55">Access type</p>
-                      <p className="mt-1 text-lg">Founding Member Preview</p>
+        <Reveal className="mx-auto mt-12 max-w-3xl">
+          <div className="border border-ink/10 bg-ink p-4 text-pearl shadow-card">
+            <div className="relative overflow-hidden bg-[linear-gradient(135deg,#100d09,#312716_58%,#080604)] p-6 md:p-8">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(200,169,106,0.32),transparent_34%),linear-gradient(120deg,rgba(255,255,255,0.08),transparent_38%)]" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-champagne">Founding member preview</p>
+                  <ShieldCheck className="h-5 w-5 text-champagne" />
+                </div>
+                <h3 className="mt-8 font-serif text-5xl leading-none tracking-[-0.04em] text-pearl md:text-6xl">Casino Cruise Escape</h3>
+                <p className="mt-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/58">MSC Divina · 7 Nights · Caribbean</p>
+
+                <div className="mt-8 grid gap-3 text-left md:grid-cols-3">
+                  {['Gaming floor access', '$300 casino credit', 'VIP embarkation'].map((item) => (
+                    <div key={item} className="border border-white/15 bg-white/10 p-4 backdrop-blur-md">
+                      <p className="text-sm font-medium text-white/86">{item}</p>
                     </div>
-                    <div className="border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/55">Status</p>
-                      <p className="mt-1 text-lg">Invitation request only</p>
-                    </div>
-                  </div>
-                  <Button className="mt-6 w-full" variant="champagne" onClick={() => scrollToSection('#guest-list')}>Continue to Guest List</Button>
+                  ))}
+                </div>
+
+                <div className="mt-8 flex flex-col gap-4 border-t border-champagne/35 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="font-serif text-3xl leading-none text-champagne">Member rate from $899 · Invitation required</p>
+                  <Button variant="champagne" size="lg" onClick={() => scrollToSection('#guest-list')}>
+                    Request Access <ArrowRight className="h-4 w-4" />
+                  </Button>
                 </div>
               </div>
             </div>
-          </Reveal>
-        </div>
+          </div>
+          <p className="mt-5 text-center font-serif text-xl italic leading-7 text-smoke">
+            Actual offers revealed to members at launch. This is a founding member preview.
+          </p>
+          <p className="mt-5 text-center text-sm italic leading-7 text-smoke">
+            Casino partners: your integration is handled separately. <button className="font-semibold text-champagne underline-offset-4 hover:underline" onClick={onPartnerInquiry}>Partner Inquiry</button>
+          </p>
+        </Reveal>
       </div>
     </section>
   );
@@ -648,7 +639,7 @@ export default function App() {
         <ExperienceSection />
         <DestinationPreview />
         <FoundingMembersSection />
-        <PaymentCardPageSection />
+        <PaymentCardPageSection onPartnerInquiry={() => setPartnerModalOpen(true)} />
         <CountdownBanner onPartnerInquiry={() => setPartnerModalOpen(true)} />
         <div
           className="relative z-10 bg-cover bg-center"
