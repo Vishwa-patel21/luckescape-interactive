@@ -14,6 +14,19 @@ interface RevealTextProps {
   className?: string;
 }
 
+function letterFill(label: string, accent: string) {
+  return `data:image/svg+xml,${encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#050403"/>
+  <path d="M-40 430 C170 315 350 305 520 245 C650 200 760 135 940 40" fill="none" stroke="${accent}" stroke-width="90" stroke-opacity=".32"/>
+  <path d="M-40 500 C190 370 390 365 570 300 C705 252 815 185 940 120" fill="none" stroke="#fff0bd" stroke-width="14" stroke-opacity=".65"/>
+  <g fill="${accent}" opacity=".88">
+    <circle cx="170" cy="250" r="9"/><circle cx="290" cy="330" r="7"/><circle cx="460" cy="230" r="8"/><circle cx="640" cy="310" r="9"/><circle cx="770" cy="210" r="7"/>
+  </g>
+  <text x="54" y="535" fill="${accent}" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="800" letter-spacing="8">${label}</text>
+</svg>`)}`
+}
+
 export function RevealText({
   text,
   textColor = 'text-[#11100d]',
@@ -25,10 +38,10 @@ export function RevealText({
   springDuration = 700,
   className = '',
   letterImages = [
-    'https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=1800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=1800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1800&auto=format&fit=crop',
+    letterFill('VEGAS', '#c8a96a'),
+    letterFill('CASINO', '#f0bf68'),
+    letterFill('ACCESS', '#d9bd79'),
+    letterFill('NIGHT', '#b89244'),
   ],
 }: RevealTextProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

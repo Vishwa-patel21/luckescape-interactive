@@ -22,20 +22,65 @@ import ScrollExpandMedia from '@/components/ui/scroll-expansion-hero';
 import { useEffect, useState } from 'react';
 import { LogoScrollIntro } from '@/components/ui/logo-scroll-intro';
 
+function visualAsset(title: string, variant: string, accent = '#c8a96a') {
+  const markup = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1300">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#050505"/>
+      <stop offset=".45" stop-color="#16110b"/>
+      <stop offset="1" stop-color="#030302"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".62" cy=".32" r=".58">
+      <stop offset="0" stop-color="${accent}" stop-opacity=".48"/>
+      <stop offset=".48" stop-color="${accent}" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1800" height="1300" fill="url(#bg)"/>
+  <rect width="1800" height="1300" fill="url(#glow)"/>
+  ${
+    variant === 'pool'
+      ? '<rect x="150" y="720" width="1500" height="360" fill="#061b24"/><path d="M170 790 C420 735 620 855 900 785 C1180 715 1380 842 1630 780" fill="none" stroke="#6dd7ff" stroke-width="18" opacity=".48"/><path d="M170 900 C480 845 630 960 930 900 C1185 848 1360 950 1630 885" fill="none" stroke="#e7b955" stroke-width="10" opacity=".65"/><g fill="#17110a"><rect x="250" y="245" width="210" height="430"/><rect x="520" y="320" width="180" height="350"/><rect x="1120" y="260" width="260" height="410"/></g>'
+      : variant === 'tower'
+        ? '<rect x="130" y="750" width="1540" height="280" fill="#08222a"/><path d="M180 845 C490 765 725 915 980 845 C1190 788 1380 890 1620 820" fill="none" stroke="#8fdfff" stroke-width="16" opacity=".42"/><g fill="#15120e"><rect x="620" y="145" width="430" height="600"/><rect x="1080" y="280" width="260" height="470"/><rect x="380" y="365" width="210" height="380"/></g><g fill="#f2c56a"><rect x="680" y="230" width="42" height="12"/><rect x="790" y="320" width="42" height="12"/><rect x="910" y="410" width="42" height="12"/><rect x="1160" y="360" width="46" height="12"/></g>'
+        : variant === 'lounge'
+          ? '<rect x="140" y="260" width="1520" height="720" fill="#120b07"/><path d="M210 800 H1590" stroke="#8a1d1d" stroke-width="130" opacity=".55"/><ellipse cx="900" cy="780" rx="420" ry="135" fill="#173322"/><ellipse cx="900" cy="780" rx="390" ry="110" fill="none" stroke="#c8a96a" stroke-width="10"/><g fill="#f1c16a"><circle cx="450" cy="350" r="28"/><circle cx="900" cy="300" r="34"/><circle cx="1350" cy="350" r="28"/></g>'
+          : variant === 'suite'
+            ? '<rect x="120" y="210" width="1560" height="820" fill="#15120e"/><rect x="220" y="300" width="520" height="470" fill="#0b0e16"/><rect x="795" y="300" width="785" height="470" fill="#0b0e16"/><g fill="#f1c36c"><rect x="865" y="470" width="32" height="95"/><rect x="925" y="410" width="42" height="155"/><rect x="1015" y="455" width="38" height="110"/><rect x="1120" y="385" width="55" height="180"/><rect x="1235" y="440" width="42" height="125"/></g><rect x="260" y="835" width="560" height="150" fill="#3a2716"/><rect x="920" y="825" width="300" height="90" fill="#22160d"/>'
+            : variant === 'entrance'
+              ? '<rect x="150" y="210" width="1500" height="770" fill="#11100d"/><path d="M300 400 H1500 V540 H300 Z" fill="#2b1608"/><path d="M380 470 H1420" stroke="#f1c36c" stroke-width="22"/><g fill="#0b0b0c"><rect x="440" y="580" width="170" height="340"/><rect x="815" y="560" width="170" height="360"/><rect x="1190" y="580" width="170" height="340"/></g><path d="M220 1000 C620 900 1100 900 1580 1015" fill="none" stroke="#f0bf68" stroke-width="16" opacity=".62"/>'
+              : variant === 'door'
+                ? '<rect width="1800" height="1300" fill="#080604"/><rect x="470" y="210" width="640" height="860" fill="#2a190d"/><rect x="680" y="280" width="600" height="760" fill="#f2c56a" opacity=".42"/><path d="M1110 240 L1360 330 V1035 L1110 1080 Z" fill="#120d09"/><circle cx="1175" cy="660" r="18" fill="#c8a96a"/><path d="M365 955 C520 800 535 535 460 385" stroke="#0f0f10" stroke-width="88" fill="none"/><circle cx="420" cy="345" r="58" fill="#1b1714"/>'
+                : variant === 'liner'
+                  ? '<rect y="650" width="1800" height="650" fill="#081926"/><path d="M170 800 C520 720 850 900 1220 800 C1440 740 1600 770 1740 820" fill="none" stroke="#ffe1a0" stroke-width="20" opacity=".6"/><path d="M350 650 H1320 L1510 790 H460 Z" fill="#f7f0df"/><rect x="560" y="470" width="500" height="185" fill="#f7f0df"/><rect x="1080" y="545" width="170" height="110" fill="#d83b2c"/><g fill="#0d2230"><rect x="610" y="525" width="55" height="24"/><rect x="710" y="525" width="55" height="24"/><rect x="810" y="525" width="55" height="24"/><rect x="910" y="525" width="55" height="24"/></g>'
+                  : variant === 'map'
+                    ? '<g fill="none" stroke="#c8a96a" stroke-opacity=".24" stroke-width="3"><path d="M190 445 C370 310 580 340 730 420 C910 518 1040 410 1195 335 C1335 270 1485 300 1620 425"/><path d="M210 735 C410 650 610 680 780 755 C960 835 1140 742 1300 675 C1435 620 1550 635 1660 735"/></g><g fill="#c8a96a" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="700" letter-spacing="5"><circle cx="410" cy="570" r="14"/><text x="440" y="583">LAS VEGAS</text><circle cx="750" cy="475" r="14"/><text x="780" y="488">MONTE CARLO</text><circle cx="660" cy="725" r="14"/><text x="690" y="738">THE BAHAMAS</text><circle cx="1225" cy="625" r="14"/><text x="1255" y="638">MACAU</text><circle cx="1270" cy="795" r="14"/><text x="1300" y="808">SINGAPORE</text><circle cx="515" cy="835" r="14"/><text x="545" y="848">CARIBBEAN</text></g>'
+                    : variant === 'trip'
+                      ? '<rect x="330" y="180" width="1140" height="900" rx="34" fill="#100d09" stroke="#c8a96a" stroke-width="5"/><rect x="390" y="260" width="1020" height="300" fill="#1d140b"/><path d="M430 485 C650 430 815 525 1000 470 C1160 425 1280 455 1370 505" fill="none" stroke="#c8a96a" stroke-width="14"/><g fill="#fffaf0" font-family="Inter,Arial,sans-serif"><text x="430" y="670" font-size="34" letter-spacing="7">CASINO CRUISE ESCAPE</text><text x="430" y="742" font-size="54" font-weight="700">MSC Divina · 7 Nights · Caribbean</text><text x="430" y="830" font-size="36">Gaming floor access · $300 casino credit · VIP embarkation</text><text x="430" y="910" font-size="44" fill="#c8a96a" font-weight="700">Member rate from $899 · Invitation required</text></g>'
+                      : '<g fill="#16110b"><rect x="260" y="420" width="220" height="390"/><rect x="560" y="300" width="260" height="510"/><rect x="920" y="380" width="210" height="430"/><rect x="1240" y="245" width="290" height="565"/></g><path d="M110 965 C500 790 930 760 1690 520" fill="none" stroke="#f5ca78" stroke-width="70" opacity=".25"/><path d="M110 1025 C530 865 950 835 1690 610" fill="none" stroke="#f8dfa3" stroke-width="14" opacity=".72"/>'
+  }
+  <rect x="0" y="0" width="1800" height="1300" fill="none" stroke="${accent}" stroke-opacity=".16" stroke-width="24"/>
+  <text x="92" y="1185" fill="${accent}" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="800" letter-spacing="9">${title}</text>
+</svg>`;
+
+  return `data:image/svg+xml,${encodeURIComponent(markup)}`;
+}
+
 const img = {
-  cruise: 'https://source.unsplash.com/1800x1300/?ocean-liner,sea,golden-hour,luxury-cruise&sig=1101',
-  resort: 'https://source.unsplash.com/1800x1300/?casino-resort,pool,night,neon&sig=1102',
-  poolTower: 'https://source.unsplash.com/1800x1300/?casino-resort,pool,tower,dusk&sig=1103',
-  lounge: 'https://source.unsplash.com/1800x1300/?casino-lounge,night,amber,felt-table&sig=1104',
-  aviation: 'https://source.unsplash.com/1800x1300/?private-jet,runway,luxury-arrival&sig=1105',
-  entrance: 'https://source.unsplash.com/1800x1300/?casino-hotel,entrance,night,valet&sig=1106',
-  vipDoor: 'https://source.unsplash.com/1800x1300/?vip-door,casino-host,night,luxury&sig=1107',
-  suite: 'https://source.unsplash.com/1800x1300/?luxury-suite,city-skyline,night,las-vegas&sig=1108',
-  dining: 'https://source.unsplash.com/1800x1300/?luxury-restaurant,casino-resort,night&sig=1109',
-  coast: 'https://source.unsplash.com/1800x1300/?coastal-resort,night,luxury&sig=1110',
-  poolNightAlt: 'https://source.unsplash.com/1800x1300/?las-vegas,pool,night,resort,lights&sig=1111',
-  worldMap:
-    'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 900%22%3E%3Crect width=%221200%22 height=%22900%22 fill=%22%23080705%22/%3E%3Cg fill=%22none%22 stroke=%22%23c8a96a%22 stroke-opacity=%22.28%22 stroke-width=%221%22%3E%3Cpath d=%22M140 330c120-90 250-70 330-25s170 35 270-30 225-30 320 55%22/%3E%3Cpath d=%22M130 505c145-60 275-45 390 8s235 55 360-10 180-45 260 10%22/%3E%3Cpath d=%22M210 680c120-45 265-25 380 20s220 24 330-25 168-25 220 10%22/%3E%3C/g%3E%3Cg fill=%22%23c8a96a%22 font-family=%22Inter,Arial,sans-serif%22 font-size=%2228%22 font-weight=%22700%22 letter-spacing=%223%22%3E%3Ccircle cx=%22255%22 cy=%22430%22 r=%2210%22/%3E%3Ctext x=%22282%22 y=%22439%22%3ELAS VEGAS%3C/text%3E%3Ccircle cx=%22568%22 cy=%22366%22 r=%2210%22/%3E%3Ctext x=%22595%22 y=%22375%22%3EMONTE CARLO%3C/text%3E%3Ccircle cx=%22472%22 cy=%22536%22 r=%2210%22/%3E%3Ctext x=%22499%22 y=%22545%22%3ETHE BAHAMAS%3C/text%3E%3Ccircle cx=%22908%22 cy=%22512%22 r=%2210%22/%3E%3Ctext x=%22935%22 y=%22521%22%3EMACAU%3C/text%3E%3Ccircle cx=%22938%22 cy=%22620%22 r=%2210%22/%3E%3Ctext x=%22965%22 y=%22629%22%3ESINGAPORE%3C/text%3E%3Ccircle cx=%22396%22 cy=%22612%22 r=%2210%22/%3E%3Ctext x=%22423%22 y=%22621%22%3ECARIBBEAN%3C/text%3E%3C/g%3E%3C/svg%3E',
+  cruise: visualAsset('OCEAN LINER AT SEA', 'liner'),
+  resort: visualAsset('CASINO POOL AT NIGHT', 'pool', '#4fd8ff'),
+  poolTower: visualAsset('POOL + CASINO TOWER', 'tower'),
+  lounge: visualAsset('CASINO LOUNGE INTERIOR', 'lounge'),
+  aviation: visualAsset('PRIVATE ARRIVAL', 'default'),
+  entrance: visualAsset('CASINO HOTEL ENTRANCE', 'entrance'),
+  vipDoor: visualAsset('HOST OPENING VIP DOOR', 'door'),
+  suite: visualAsset('SUITE WITH CASINO SKYLINE', 'suite'),
+  dining: visualAsset('LUXURY RESORT DINING', 'default'),
+  coast: visualAsset('COASTAL CASINO ESCAPE', 'default', '#6fb9d4'),
+  poolNightAlt: visualAsset('CASINO POOL NIGHT ANGLE', 'pool', '#d46fd0'),
+  worldMap: visualAsset('FOUNDING DESTINATION MAP', 'map'),
+  tripCard: visualAsset('LUCKESCAPE TRIP CARD', 'trip'),
 };
 
 const experienceCards = [
@@ -346,7 +391,7 @@ function PaymentCardPageSection() {
           <Reveal>
             <div className="border border-ink/10 bg-ink p-4 text-pearl shadow-card">
               <div className="relative overflow-hidden bg-[linear-gradient(135deg,#15120e,#312716)] p-7">
-                <img src={img.lounge} alt="Private lounge preview" className="absolute inset-0 h-full w-full object-cover opacity-24" />
+                <img src={img.tripCard} alt="LuckEscape trip card preview" className="absolute inset-0 h-full w-full object-cover opacity-70" />
                 <div className="relative z-10">
                   <div className="flex items-center justify-between">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-champagne">Launch Access</p>

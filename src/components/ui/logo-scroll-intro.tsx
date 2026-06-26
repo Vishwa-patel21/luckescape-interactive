@@ -61,8 +61,16 @@ export function LogoScrollIntro() {
           className="absolute inset-[-10%] bg-cover bg-center opacity-100"
         />
 
-        <div className="absolute inset-0 bg-[rgba(3,3,2,0.50)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(200,169,106,0.12),rgba(3,3,2,0.24)_44%,rgba(3,3,2,0.70)_86%)]" />
+        <div
+          className="absolute inset-0 opacity-80"
+          style={{
+            backgroundImage:
+              'linear-gradient(155deg, transparent 0%, transparent 50%, rgba(248,210,130,0.18) 51%, rgba(248,210,130,0.52) 53%, rgba(248,210,130,0.12) 56%, transparent 62%), radial-gradient(circle at 26% 72%, rgba(255,215,123,0.9) 0 3px, transparent 4px), radial-gradient(circle at 33% 68%, rgba(255,215,123,0.8) 0 2px, transparent 4px), radial-gradient(circle at 41% 64%, rgba(255,230,166,0.95) 0 3px, transparent 5px), radial-gradient(circle at 52% 61%, rgba(255,215,123,0.8) 0 2px, transparent 4px), radial-gradient(circle at 63% 55%, rgba(255,230,166,0.9) 0 3px, transparent 5px), radial-gradient(circle at 72% 48%, rgba(255,215,123,0.85) 0 2px, transparent 4px), radial-gradient(circle at 80% 41%, rgba(255,230,166,0.8) 0 3px, transparent 5px)',
+          }}
+        />
+
+        <div className="absolute inset-0 bg-[rgba(3,3,2,0.42)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(200,169,106,0.18),rgba(3,3,2,0.10)_44%,rgba(3,3,2,0.34)_86%)]" />
       </motion.div>
 
       <div className="sticky top-0 z-10 flex h-screen items-center justify-center overflow-hidden px-6">
