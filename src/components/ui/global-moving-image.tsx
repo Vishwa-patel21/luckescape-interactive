@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 export const LUXURY_HERO_IMAGE = '/images/luckescape/1.jpg';
-export const CLOSING_HERO_IMAGE = '/images/luckescape/1.jpg';
+export const CLOSING_HERO_IMAGE = '/images/luckescape/closing-strip.jpg';
 
 function usePointerRatio() {
   const [position, setPosition] = useState({ x: 0.5, y: 0.5 });
